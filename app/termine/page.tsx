@@ -1,139 +1,320 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin, Calendar, Clock } from "lucide-react";
+import { MapPin, Clock, ChevronRight } from "lucide-react";
+import PastEvents from "./PastEvents";
+
+// ── Sub-cards for Einzelbehandlungen ────────────────────────────────────────
+
+const einzelItems = [
+  { title: "Soul Sound Healing", price: "90€", duration: "ca. 70 Min" },
+  { title: "Klangliege & Körpermonochord", price: "75€", duration: "ca. 50 Min" },
+  { title: "Kristallpyramide", price: "60€", duration: "ca. 40 Min" },
+  { title: "Klangschalen für Kinder", price: "49€", duration: "ca. 30 Min · 6er Block 270€" },
+  { title: "Magie der Stimme", price: "90€", duration: "ca. 60 Min" },
+];
+
+// ── Shared styles ────────────────────────────────────────────────────────────
+
+const LABEL = {
+  fontFamily: "var(--font-body), Georgia, serif",
+  color: "var(--gold)" as const,
+  fontSize: "10px",
+  textTransform: "uppercase" as const,
+  letterSpacing: "0.25em",
+};
+
+const BODY = {
+  fontFamily: "var(--font-body), Georgia, serif",
+  color: "var(--text-muted)" as const,
+};
 
 export default function TerminePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-[#F5E6C8] via-[#E8D0A0] to-[#B8860B] py-24 text-center">
-        <h1
-          className="text-5xl sm:text-6xl font-bold text-white mb-4"
-          style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
-        >
-          Termine
-        </h1>
-        <p className="text-white/90 text-xl">Ich freue mich auf deine Anfrage</p>
+      {/* ── HERO ───────────────────────────────────────────────────────────── */}
+      <section
+        className="relative flex flex-col items-center justify-center text-center px-6 overflow-hidden"
+        style={{ minHeight: "45vh", backgroundColor: "var(--bg)" }}
+      >
+        <div className="grain absolute inset-0 pointer-events-none" />
+        <div className="relative z-10 max-w-2xl mx-auto pt-32 pb-16">
+          <p className="text-[10px] uppercase tracking-[0.3em] mb-6" style={BODY}>
+            Veranstaltungskalender
+          </p>
+          <h1
+            style={{
+              fontFamily: "var(--font-heading), Georgia, serif",
+              fontWeight: 300,
+              fontSize: "clamp(2.4rem, 7vw, 4.8rem)",
+              letterSpacing: "0.15em",
+              color: "var(--text)",
+              lineHeight: 1.1,
+            }}
+          >
+            Termine &amp;<br />Veranstaltungen
+          </h1>
+          <span className="gold-line mt-8 block" />
+        </div>
       </section>
 
-      {/* Kontakt */}
-      <section className="py-24 bg-[#FFF8F0]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Kontaktinfo */}
-            <div>
+      {/* ── EVENTS ─────────────────────────────────────────────────────────── */}
+      <section className="py-24 px-6" style={{ backgroundColor: "var(--sage)" }}>
+        <div className="max-w-4xl mx-auto space-y-8">
+
+          {/* ── EVENT 1: Training Intuition & Hellsinne ───────────────────── */}
+          <article style={{ backgroundColor: "var(--bg)", border: "1px solid rgba(166,137,77,0.2)" }}>
+            {/* Image placeholder */}
+            <div className="mesh-gold grain relative w-full" style={{ height: "220px" }} />
+
+            <div className="px-8 pt-8 pb-10">
+              {/* Label + Badge */}
+              <div className="flex flex-wrap items-center gap-3 mb-5">
+                <span style={LABEL}>Training</span>
+                <span
+                  className="text-[10px] uppercase tracking-[0.1em] px-3 py-1"
+                  style={{ border: "1px solid var(--gold)", color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}
+                >
+                  Frühbucherpreis bis 27.2.2026
+                </span>
+              </div>
+
               <h2
-                className="text-4xl font-bold text-stone-900 mb-6"
-                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
+                className="mb-1"
+                style={{
+                  fontFamily: "var(--font-heading), Georgia, serif",
+                  fontWeight: 400,
+                  fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+                  letterSpacing: "0.04em",
+                  color: "var(--text)",
+                }}
               >
-                Terminvereinbarung
+                Intuition &amp; Hellsinne
               </h2>
-              <div className="w-16 h-1 bg-[#B8860B] mb-8 rounded-full" />
-              <p className="text-xl text-stone-700 leading-relaxed mb-10">
-                Terminvereinbarungen gerne telefonisch oder per E-Mail. Ich antworte
-                so schnell wie möglich und freue mich darauf, dich kennenzulernen.
+              <p
+                className="italic text-sm mb-6"
+                style={{ fontFamily: "var(--font-heading), Georgia, serif", color: "var(--text-muted)", letterSpacing: "0.03em" }}
+              >
+                Klarheit durch innere Führung
               </p>
 
-              <div className="space-y-6">
-                <a
-                  href="tel:+436767516188"
-                  className="flex items-center gap-5 bg-white rounded-2xl p-6 border border-[#E8D8C4] shadow-sm hover:border-[#B8860B] hover:shadow-md transition-all group"
-                >
-                  <div className="w-14 h-14 bg-[#F5EDE0] rounded-2xl flex items-center justify-center group-hover:bg-[#B8860B] transition-colors">
-                    <Phone className="w-6 h-6 text-[#B8860B] group-hover:text-white transition-colors" />
-                  </div>
-                  <div>
-                    <p className="text-stone-500 text-sm font-medium mb-1">Telefon</p>
-                    <p className="text-stone-900 text-xl font-bold">+43 (0) 676 7516188</p>
-                  </div>
-                </a>
+              <p className="text-sm leading-relaxed mb-8" style={BODY}>
+                Intuition und Hellsinne sind wertvolle Schlüssel, über die jeder von uns verfügt,
+                die aber oft unbewusst in uns schlummern. Als ausgebildetes Medium und feinfühliger
+                Mensch biete ich dir eine herzliche und achtsame Zugangsweise. Du erhältst klare
+                Werkzeuge und effektive Übungen, um deine intuitive Seite zu stärken und
+                feinstoffliche Eindrücke bewusst zu erleben.
+              </p>
 
-                <a
-                  href="mailto:antonia@braditsch.at?subject=Termin vereinbaren"
-                  className="flex items-center gap-5 bg-white rounded-2xl p-6 border border-[#E8D8C4] shadow-sm hover:border-[#B8860B] hover:shadow-md transition-all group"
-                >
-                  <div className="w-14 h-14 bg-[#F5EDE0] rounded-2xl flex items-center justify-center group-hover:bg-[#B8860B] transition-colors">
-                    <Mail className="w-6 h-6 text-[#B8860B] group-hover:text-white transition-colors" />
-                  </div>
-                  <div>
-                    <p className="text-stone-500 text-sm font-medium mb-1">E-Mail</p>
-                    <p className="text-stone-900 text-xl font-bold">antonia@braditsch.at</p>
-                  </div>
-                </a>
-
-                <div className="flex items-center gap-5 bg-white rounded-2xl p-6 border border-[#E8D8C4] shadow-sm">
-                  <div className="w-14 h-14 bg-[#F5EDE0] rounded-2xl flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-[#B8860B]" />
-                  </div>
-                  <div>
-                    <p className="text-stone-500 text-sm font-medium mb-1">Praxis</p>
-                    <p className="text-stone-900 text-xl font-bold">VIVARIUM</p>
-                    <p className="text-stone-600">Angergasse 7, 2493 Lichtenwörth</p>
-                  </div>
+              {/* Meta grid */}
+              <div className="grid sm:grid-cols-3 gap-6 mb-8 pt-6" style={{ borderTop: "1px solid rgba(166,137,77,0.15)" }}>
+                <div>
+                  <p className="mb-1" style={LABEL}>Termin</p>
+                  <p className="text-sm" style={{ color: "var(--text)", fontFamily: "var(--font-body), Georgia, serif" }}>
+                    Ab 28. März 2026
+                  </p>
+                  <p className="text-xs mt-0.5" style={BODY}>
+                    Monatlich jeden 3. Samstag<br />
+                    9:30 – 13:30 Uhr<br />
+                    (außer August)
+                  </p>
+                </div>
+                <div>
+                  <p className="mb-1" style={LABEL}>Ort</p>
+                  <p className="text-sm" style={{ color: "var(--text)", fontFamily: "var(--font-body), Georgia, serif" }}>VIVARIUM</p>
+                  <p className="text-xs mt-0.5" style={BODY}>Lichtenwörth</p>
+                </div>
+                <div>
+                  <p className="mb-1" style={LABEL}>Preis</p>
+                  <p className="text-sm" style={{ color: "var(--gold)", fontFamily: "var(--font-heading), Georgia, serif", fontSize: "1.1rem", fontWeight: 400 }}>
+                    495€
+                  </p>
+                  <p className="text-xs mt-0.5" style={BODY}>
+                    Frühbucher: 450€ bis 27.2.2026<br />
+                    Teilzahlung möglich
+                  </p>
                 </div>
               </div>
 
-              <div className="mt-8">
+              <Link
+                href="mailto:antonia@braditsch.at?subject=Training Intuition & Hellsinne"
+                className="btn-gold-outline"
+              >
+                Jetzt anmelden <ChevronRight className="w-3 h-3" />
+              </Link>
+            </div>
+          </article>
+
+          {/* Divider */}
+          <div style={{ height: "1px", backgroundColor: "rgba(166,137,77,0.15)" }} />
+
+          {/* ── EVENT 2: Heilsames Singen ─────────────────────────────────── */}
+          <article style={{ backgroundColor: "var(--bg)", border: "1px solid rgba(166,137,77,0.2)" }}>
+            <div className="mesh-rose grain relative w-full" style={{ height: "180px" }} />
+
+            <div className="px-8 pt-8 pb-10">
+              <div className="flex flex-wrap items-center gap-3 mb-5">
+                <span style={LABEL}>Offene Gruppe</span>
+                <span
+                  className="text-[10px] uppercase tracking-[0.1em] px-3 py-1"
+                  style={{ border: "1px solid rgba(166,137,77,0.4)", color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}
+                >
+                  Jeden 3. Mittwoch
+                </span>
+              </div>
+
+              <h2
+                className="mb-6"
+                style={{
+                  fontFamily: "var(--font-heading), Georgia, serif",
+                  fontWeight: 400,
+                  fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+                  letterSpacing: "0.04em",
+                  color: "var(--text)",
+                }}
+              >
+                Heilsames Singen
+              </h2>
+
+              <p className="text-sm leading-relaxed mb-8" style={BODY}>
+                Singen steigert nachweislich das Selbstbewusstsein, setzt Glückshormone frei,
+                entspannt, schenkt Freude und gute Laune. Beim heilsamen Singen gibt es keine
+                falschen Töne. Eingeladen sind gerade jene Menschen, die glauben nicht singen
+                zu können.
+              </p>
+
+              <div className="grid sm:grid-cols-3 gap-6 mb-8 pt-6" style={{ borderTop: "1px solid rgba(166,137,77,0.15)" }}>
+                <div>
+                  <p className="mb-1" style={LABEL}>Termin</p>
+                  <p className="text-sm" style={{ color: "var(--text)", fontFamily: "var(--font-body), Georgia, serif" }}>
+                    Jeden 3. Mittwoch
+                  </p>
+                  <p className="text-xs mt-0.5" style={BODY}>18:30 – 20:00 Uhr</p>
+                </div>
+                <div>
+                  <p className="mb-1" style={LABEL}>Ort</p>
+                  <p className="text-sm" style={{ color: "var(--text)", fontFamily: "var(--font-body), Georgia, serif" }}>VIVARIUM</p>
+                  <p className="text-xs mt-0.5" style={BODY}>Angergasse 7, 2493 Lichtenwörth</p>
+                </div>
+                <div>
+                  <p className="mb-1" style={LABEL}>Preis</p>
+                  <p className="text-sm" style={{ color: "var(--gold)", fontFamily: "var(--font-heading), Georgia, serif", fontSize: "1.1rem", fontWeight: 400 }}>
+                    25€
+                  </p>
+                  <p className="text-xs mt-0.5" style={BODY}>pro Abend</p>
+                </div>
+              </div>
+
+              <Link
+                href="mailto:antonia@braditsch.at?subject=Heilsames Singen"
+                className="btn-gold-outline"
+              >
+                Jetzt anmelden <ChevronRight className="w-3 h-3" />
+              </Link>
+            </div>
+          </article>
+
+          {/* Divider */}
+          <div style={{ height: "1px", backgroundColor: "rgba(166,137,77,0.15)" }} />
+
+          {/* ── EVENT 3: Einzelbehandlungen ───────────────────────────────── */}
+          <article style={{ backgroundColor: "var(--bg)", border: "1px solid rgba(166,137,77,0.2)" }}>
+            <div className="mesh-warm grain relative w-full" style={{ height: "180px" }} />
+
+            <div className="px-8 pt-8 pb-10">
+              <div className="mb-5">
+                <span style={LABEL}>Immer verfügbar</span>
+              </div>
+
+              <h2
+                className="mb-2"
+                style={{
+                  fontFamily: "var(--font-heading), Georgia, serif",
+                  fontWeight: 400,
+                  fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+                  letterSpacing: "0.04em",
+                  color: "var(--text)",
+                }}
+              >
+                Einzelbehandlungen
+              </h2>
+              <p className="text-sm leading-relaxed mb-8" style={BODY}>
+                Individuelle Klang-, Stimm- und mediale Sitzungen nach Vereinbarung.
+              </p>
+
+              {/* Sub-cards */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
+                {einzelItems.map((item) => (
+                  <div
+                    key={item.title}
+                    className="px-5 py-4"
+                    style={{ border: "1px solid rgba(166,137,77,0.18)", backgroundColor: "var(--sage)" }}
+                  >
+                    <p
+                      className="text-sm mb-2"
+                      style={{ color: "var(--text)", fontFamily: "var(--font-body), Georgia, serif" }}
+                    >
+                      {item.title}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <span
+                        style={{ color: "var(--gold)", fontFamily: "var(--font-heading), Georgia, serif", fontSize: "1rem", fontWeight: 400 }}
+                      >
+                        {item.price}
+                      </span>
+                      <span style={{ color: "rgba(166,137,77,0.3)" }}>·</span>
+                      <span className="text-xs" style={BODY}>{item.duration}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4 pt-4" style={{ borderTop: "1px solid rgba(166,137,77,0.15)" }}>
+                <div className="flex items-center gap-2 text-xs" style={BODY}>
+                  <MapPin className="w-3.5 h-3.5 shrink-0" style={{ color: "var(--gold)" }} />
+                  VIVARIUM, Angergasse 7, 2493 Lichtenwörth
+                </div>
+                <div className="flex items-center gap-2 text-xs" style={BODY}>
+                  <Clock className="w-3.5 h-3.5 shrink-0" style={{ color: "var(--gold)" }} />
+                  Nach Vereinbarung
+                </div>
+              </div>
+
+              <div className="mt-6">
                 <Link
                   href="mailto:antonia@braditsch.at?subject=Termin vereinbaren"
-                  className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#9A7009] text-white font-bold px-8 py-4 rounded-xl transition-colors min-h-[56px] text-lg"
+                  className="btn-gold-outline"
                 >
-                  <Calendar className="w-5 h-5" />
-                  Termin anfragen
+                  Termin vereinbaren <ChevronRight className="w-3 h-3" />
                 </Link>
               </div>
             </div>
+          </article>
 
-            {/* Termine & Veranstaltungen */}
-            <div>
-              <h2
-                className="text-4xl font-bold text-stone-900 mb-6"
-                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
-              >
-                Regelmäßige Termine
-              </h2>
-              <div className="w-16 h-1 bg-[#B8860B] mb-8 rounded-full" />
+          {/* ── PAST EVENTS ACCORDION ─────────────────────────────────────── */}
+          <PastEvents />
 
-              <div className="space-y-4">
-                <div className="bg-white rounded-2xl p-6 border border-[#E8D8C4] shadow-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#FAF0DC] rounded-xl flex items-center justify-center shrink-0">
-                      <Clock className="w-5 h-5 text-[#B8860B]" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-stone-900 mb-1">Heilsames Singen</h3>
-                      <p className="text-[#B8860B] font-semibold mb-2">Offene Gruppe · 25€</p>
-                      <p className="text-stone-600">Jeden 3. Mittwoch im Monat</p>
-                      <p className="text-stone-600">18:30 – 20:00 Uhr</p>
-                      <p className="text-stone-500 text-sm mt-2">VIVARIUM, Lichtenwörth</p>
-                    </div>
-                  </div>
-                </div>
+        </div>
+      </section>
 
-                <div className="bg-[#F5EDE0] rounded-2xl p-6 border border-[#E8D8C4]">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Calendar className="w-5 h-5 text-[#B8860B]" />
-                    <h3 className="text-lg font-bold text-stone-900">Workshops & Sonderveranstaltungen</h3>
-                  </div>
-                  <p className="text-stone-600 leading-relaxed">
-                    Für aktuelle Workshop-Termine und Sonderveranstaltungen (Hildegard von
-                    Bingen Lesungen, Klangabende etc.) kontaktiere mich bitte direkt.
-                  </p>
-                </div>
-
-                <div className="bg-white rounded-2xl p-6 border border-[#E8D8C4] shadow-sm text-center">
-                  <p className="text-stone-600 text-lg mb-4">
-                    Einzeltermine für alle Angebote nach Vereinbarung.
-                  </p>
-                  <Link
-                    href="mailto:antonia@braditsch.at?subject=Termin vereinbaren"
-                    className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#9A7009] text-white font-bold px-6 py-3 rounded-xl transition-colors"
-                  >
-                    Jetzt anfragen
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* ── CONTACT FOOTER ─────────────────────────────────────────────────── */}
+      <section className="py-16 px-6" style={{ backgroundColor: "var(--bg)" }}>
+        <div className="max-w-4xl mx-auto text-center">
+          <span className="gold-line mb-8 block" />
+          <p className="text-sm leading-relaxed" style={BODY}>
+            Weitere Infos &amp; Anmeldung unter{" "}
+            <a
+              href="mailto:antonia@braditsch.at"
+              style={{ color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}
+            >
+              antonia@braditsch.at
+            </a>
+            {" "}oder{" "}
+            <a
+              href="tel:+436767516188"
+              style={{ color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}
+            >
+              0676 7516188
+            </a>
+          </p>
         </div>
       </section>
     </>

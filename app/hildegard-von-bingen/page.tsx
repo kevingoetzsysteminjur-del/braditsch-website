@@ -1,166 +1,463 @@
-import Link from "next/link";
-import { Youtube, Music, Mic } from "lucide-react";
+"use client";
 
-function ImagePlaceholder({ className = "" }: { className?: string }) {
-  return <div className={`bg-gradient-to-br from-[#FFF8F0] via-[#F5EDE0] to-[#EAD9C0] ${className}`} />;
+import { useEffect, useRef, useState, useCallback } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight, ChevronDown, Youtube, Music, ShoppingBag } from "lucide-react";
+
+/* ─── CAROUSEL ─────────────────────────────────────────────── */
+
+const SLIDES = [
+  "/images/hildegard/szene1.jpg",
+  "/images/hildegard/szene2.jpg",
+  "/images/hildegard/szene3.jpg",
+  "/images/hildegard/szene4.jpg",
+];
+
+function Carousel() {
+  const [active, setActive] = useState(0);
+  const [fading, setFading] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const go = useCallback((i: number) => {
+    if (i === active) return;
+    setFading(true);
+    setTimeout(() => {
+      setActive(i);
+      setFading(false);
+    }, 300);
+  }, [active]);
+
+  const next = useCallback(() => go((active + 1) % SLIDES.length), [active, go]);
+  const prev = useCallback(() => go((active - 1 + SLIDES.length) % SLIDES.length), [active, go]);
+
+  useEffect(() => {
+    if (hovered) return;
+    timerRef.current = setTimeout(next, 5000);
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+  }, [active, hovered, next]);
+
+  return (
+    <div>
+      {/* Main image */}
+      <div
+        className="relative mx-auto overflow-hidden"
+        style={{ maxWidth: "900px", borderRadius: "12px", aspectRatio: "16/10" }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            opacity: fading ? 0 : 1,
+            transition: "opacity 0.6s ease",
+          }}
+        >
+          <Image
+            src={SLIDES[active]}
+            alt={`Szenenfoto ${active + 1} aus Der Klang des lebendigen Lichts`}
+            fill
+            className="object-cover"
+            sizes="900px"
+            priority
+          />
+        </div>
+
+        {/* Gradient overlay bottom */}
+        <div
+          className="absolute bottom-0 left-0 right-0 pointer-events-none"
+          style={{ height: "30%", background: "linear-gradient(to top, rgba(61,50,41,0.25), transparent)" }}
+        />
+
+        {/* Arrows */}
+        <button
+          onClick={prev}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center transition-all duration-300 hover:opacity-100 opacity-70"
+          style={{ backgroundColor: "rgba(250,247,242,0.85)", border: "1px solid rgba(166,137,77,0.3)" }}
+          aria-label="Vorheriges Bild"
+        >
+          <ChevronLeft className="w-4 h-4" style={{ color: "var(--gold)" }} />
+        </button>
+        <button
+          onClick={next}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center transition-all duration-300 hover:opacity-100 opacity-70"
+          style={{ backgroundColor: "rgba(250,247,242,0.85)", border: "1px solid rgba(166,137,77,0.3)" }}
+          aria-label="Nächstes Bild"
+        >
+          <ChevronRight className="w-4 h-4" style={{ color: "var(--gold)" }} />
+        </button>
+
+        {/* Slide counter */}
+        <div
+          className="absolute bottom-4 right-5 text-[10px] uppercase tracking-[0.15em]"
+          style={{ color: "rgba(255,255,255,0.8)", fontFamily: "var(--font-body), Georgia, serif" }}
+        >
+          {active + 1} / {SLIDES.length}
+        </div>
+      </div>
+
+      {/* Thumbnails */}
+      <div className="flex justify-center gap-3 mt-5 mx-auto" style={{ maxWidth: "900px" }}>
+        {SLIDES.map((src, i) => (
+          <button
+            key={i}
+            onClick={() => go(i)}
+            className="relative overflow-hidden shrink-0 transition-all duration-300"
+            style={{
+              width: "clamp(60px, 12vw, 100px)",
+              aspectRatio: "16/10",
+              borderRadius: "4px",
+              border: i === active
+                ? "2px solid var(--gold)"
+                : "2px solid transparent",
+              opacity: i === active ? 1 : 0.55,
+              outline: "none",
+            }}
+            aria-label={`Bild ${i + 1} anzeigen`}
+          >
+            <Image src={src} alt={`Thumbnail ${i + 1}`} fill className="object-cover" sizes="100px" />
+          </button>
+        ))}
+      </div>
+
+      {/* Caption */}
+      <p
+        className="text-center mt-5 text-[11px] uppercase tracking-[0.2em]"
+        style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}
+      >
+        Szenenfotos aus „Der Klang des lebendigen Lichts"
+      </p>
+    </div>
+  );
 }
 
+/* ─── SCROLL REVEAL ────────────────────────────────────────── */
+
+function useScrollReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>(".sr");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add("sr-visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+}
+
+/* ─── PAGE ─────────────────────────────────────────────────── */
+
 export default function HildegardPage() {
+  useScrollReveal();
+
   return (
     <>
-      {/* Hero */}
-      <section className="relative h-72 sm:h-96">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FFF8F0] via-[#F5EDE0] to-[#C9A44A]" />
-        <div className="absolute inset-0 bg-black/15" />
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-          <p className="text-[#B8860B] font-semibold uppercase tracking-widest text-sm mb-3">
+      <style>{`
+        .sr { opacity: 0; transform: translateY(28px); transition: opacity 0.85s ease, transform 0.85s ease; }
+        .sr-visible { opacity: 1 !important; transform: translateY(0) !important; }
+        .sr.delay-1 { transition-delay: 0.15s; }
+        .sr.delay-2 { transition-delay: 0.3s; }
+        .sr.delay-3 { transition-delay: 0.45s; }
+        .sr.delay-4 { transition-delay: 0.6s; }
+      `}</style>
+
+      {/* ── HERO ─────────────────────────────────────────── */}
+      <section
+        className="relative flex flex-col items-center justify-center text-center overflow-hidden"
+        style={{ minHeight: "70vh", backgroundColor: "var(--bg)" }}
+      >
+        <div className="grain absolute inset-0 pointer-events-none" />
+        {/* Soft mesh gradient */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `
+              radial-gradient(ellipse 60% 50% at 30% 40%, rgba(166,137,77,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse 50% 60% at 70% 60%, rgba(232,213,204,0.35) 0%, transparent 55%)
+            `,
+          }}
+        />
+
+        <div className="relative z-10 px-6 pt-36 pb-20">
+          <p
+            className="text-[10px] uppercase tracking-[0.35em] mb-6"
+            style={{ color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}
+          >
             1098 – 1179
           </p>
+
           <h1
-            className="text-4xl sm:text-6xl font-bold text-stone-900 mb-4"
-            style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
+            style={{
+              fontFamily: "var(--font-heading), Georgia, serif",
+              fontWeight: 300,
+              fontSize: "clamp(3rem, 9vw, 7rem)",
+              letterSpacing: "0.12em",
+              color: "var(--text)",
+              lineHeight: 1.05,
+            }}
           >
-            Hildegard von Bingen
+            Hildegard<br />von Bingen
           </h1>
-          <p className="text-stone-700 text-xl max-w-xl">
-            Äbtissin · Heilerin · Komponistin · Mystikerin
+
+          <span className="block mt-7 mb-7 mx-auto" style={{ width: "70px", height: "1px", backgroundColor: "var(--gold)", opacity: 0.6 }} />
+
+          <p
+            style={{
+              fontFamily: "var(--font-body), Georgia, serif",
+              color: "var(--text-muted)",
+              fontSize: "clamp(0.65rem, 1.4vw, 0.78rem)",
+              letterSpacing: "0.28em",
+              textTransform: "uppercase",
+            }}
+          >
+            Prophetin&ensp;·&ensp;Komponistin&ensp;·&ensp;Heilkundige&ensp;·&ensp;Mystikerin
           </p>
-        </div>
-      </section>
 
-      {/* Intro */}
-      <section className="py-24 bg-[#FFF8F0]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2
-                className="text-4xl font-bold text-stone-900 mb-6"
-                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
-              >
-                Eine Visionärin für unsere Zeit
-              </h2>
-              <div className="w-16 h-1 bg-[#B8860B] mb-8 rounded-full" />
-              <p className="text-xl text-stone-700 leading-relaxed mb-6">
-                Hildegard von Bingen ist eine faszinierende und inspirierende Persönlichkeit.
-                Mit ihrem liebevollen Menschenverständnis und der ausgeprägten Naturverbundenheit
-                ist sie heute aktueller denn je.
-              </p>
-              <p className="text-xl text-stone-700 leading-relaxed mb-6">
-                Als Benediktiner-Äbtissin, Heilerin, Naturforscherin, Komponistin und Mystikerin
-                hat sie ein Lebenswerk hinterlassen, das bis heute begeistert und inspiriert.
-                Ihre Heilkunde, ihre Musik und ihre visionären Schriften berühren Menschen
-                quer durch alle Zeiten und Kulturen.
-              </p>
-              <p className="text-xl text-stone-700 leading-relaxed">
-                Über ihr Leben, Werk und Wirken spreche ich in Workshops und stelle es in
-                szenischen Lesungen mit ihren <strong>Originalgesängen</strong> sowie Musik
-                auf mittelalterlichen Instrumenten dar.
-              </p>
-            </div>
-            <div>
-              <ImagePlaceholder className="w-full h-[480px] rounded-3xl shadow-2xl" />
-            </div>
+          {/* Scroll indicator */}
+          <div className="scroll-indicator mt-16 flex flex-col items-center gap-2 opacity-40">
+            <ChevronDown className="w-4 h-4" style={{ color: "var(--gold)" }} />
           </div>
         </div>
       </section>
 
-      {/* Vale Retro Podcast */}
-      <section className="py-24 bg-white" id="podcast">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="bg-[#F5EDE0] rounded-3xl p-10 border border-[#E8D8C4]">
-              <div className="w-20 h-20 bg-[#B8860B] rounded-2xl flex items-center justify-center mb-6">
-                <Mic className="w-10 h-10 text-white" />
-              </div>
-              <h2
-                className="text-3xl font-bold text-stone-900 mb-4"
-                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
-              >
-                Vale Retro Podcast
-              </h2>
-              <p className="text-stone-700 text-lg leading-relaxed mb-8">
-                Im Podcast „Vale Retro" tauche ich tief in die Welt der Hildegard von Bingen
-                ein. Ich erzähle von ihrem Leben, erkläre ihre Heilmethoden und lasse ihre
-                Weisheit für unsere heutige Zeit lebendig werden. Ein Podcast für alle, die
-                sich von dieser außergewöhnlichen Frau inspirieren lassen möchten.
-              </p>
-              <Link
-                href="#"
-                className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#9A7009] text-white font-bold px-6 py-3.5 rounded-xl transition-colors min-h-[52px]"
-              >
-                <Youtube className="w-5 h-5" />
-                Zum Podcast auf YouTube
-              </Link>
-            </div>
+      {/* ── HAUPTTEXT ─────────────────────────────────────── */}
+      <section className="py-16 sm:py-24 px-5 sm:px-6" style={{ backgroundColor: "var(--bg)" }}>
+        <div className="max-w-3xl mx-auto">
 
-            <div>
-              <h3
-                className="text-2xl font-bold text-stone-900 mb-4"
-                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
-              >
-                Themen im Podcast
-              </h3>
-              <div className="space-y-4">
-                {[
-                  "Das Leben und Wirken der Hildegard von Bingen",
-                  "Ihre Heilpflanzen und Naturheilkunde",
-                  "Visionen und mystische Erfahrungen",
-                  "Die Musik der Hildegard – Klang und Heilung",
-                  "Hildegards Aktualität für unsere Zeit",
-                  "Szenische Lesungen und Originalgesänge",
-                ].map((thema) => (
-                  <div key={thema} className="flex items-center gap-3 text-stone-700 text-lg">
-                    <div className="w-2 h-2 rounded-full bg-[#B8860B] shrink-0" />
-                    {thema}
-                  </div>
-                ))}
-              </div>
-            </div>
+          {/* Absatz 1 */}
+          <div className="sr mb-10">
+            <p
+              className="text-base sm:text-lg leading-[1.95]"
+              style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}
+            >
+              Hildegard von Bingen (1098–1179) ist seit dem christlichen Mittelalter eine einzigartige und unerreicht dastehende Persönlichkeit. Sie gründete zwei Klöster, dichtete Hymnen und komponierte liturgische Gesänge, verfasste ein umfangreiches theologisch-philosophisches Werk und hinterlässt eine außergewöhnliche Naturheilkunde. Sie wetterte auf Predigtreisen gegen Maßlosigkeit, Geldgier und Ämterschacher und stand mit weltlichen und religiösen Entscheidungsträgern in ganz Europa im mahnenden Briefwechsel.
+            </p>
+          </div>
+
+          {/* Absatz 2 */}
+          <div className="sr delay-1 mb-10">
+            <p
+              className="text-base sm:text-lg leading-[1.95]"
+              style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}
+            >
+              Hildegard war bereits von ihren Zeitgenossen eine hoch respektierte, vielbewunderte Frau und wurde als <em style={{ color: "var(--text)" }}>Prophetissa teutonica</em> gepriesen. Sie selbst empfand sich nur als einfaches Sprachrohr Gottes. 1227 wurde ein erster Antrag auf Heiligsprechung gestellt. Am 10. Mai 2012 wurde sie von Papst Benedikt XVI. heilig gesprochen und am 17. Oktober 2012 feierlich zur Kirchenlehrerin erhoben.
+            </p>
+          </div>
+
+          {/* Absatz 3 – Musik */}
+          <div className="sr delay-2 mb-10">
+            <p
+              className="text-base sm:text-lg leading-[1.95]"
+              style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}
+            >
+              Für Hildegard ist Gesang Widerhall der himmlischen Harmonie und somit göttlichen Ursprungs. Als einzige Frau des deutschen Mittelalters hat sie einen umfangreichen lyrisch-musikalischen Zyklus geschaffen, den sie <em style={{ color: "var(--text)" }}>'Symphonia harmoniae caelestium revelationum – Symphonie der Harmonie himmlischer Offenbarungen'</em> nennt. Die einstimmigen liturgischen Gesänge sind in Neumenschrift als skizzenhafte Zeichen für die Tonhöhe in einem Vierliniensystem notiert und weisen im Vergleich zur damals gebräuchlichen Gregorianik einen sehr weitläufigen Tonumfang auf.
+            </p>
+          </div>
+
+          {/* Zitat */}
+          <div
+            className="sr delay-3 my-14 py-10 px-8 sm:px-12"
+            style={{ borderLeft: "3px solid var(--gold)", backgroundColor: "var(--sage)" }}
+          >
+            <p
+              className="text-xl sm:text-2xl leading-relaxed mb-5"
+              style={{
+                fontFamily: "var(--font-heading), Georgia, serif",
+                fontStyle: "italic",
+                fontWeight: 400,
+                color: "var(--text)",
+                letterSpacing: "0.02em",
+              }}
+            >
+              „Beim Hören eines Liedes pflegt der Mensch manchmal tief zu atmen und zu seufzen, weil er sich daran erinnert, dass die Seele der himmlischen Harmonie entstammt. Er wird sich dabei bewusst, dass seine Seele symphonisch ist… Deswegen muss der Leib im Einklang mit der Seele seine Stimme zum Gotteslob erheben."
+            </p>
+            <p
+              className="text-[11px] uppercase tracking-[0.2em]"
+              style={{ color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}
+            >
+              – Brief an die Mainzer Prälaten
+            </p>
+          </div>
+
+          {/* Absatz 4 – Szenische Lesung */}
+          <div className="sr delay-4">
+            <p
+              className="text-base sm:text-lg leading-[1.95]"
+              style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}
+            >
+              In der szenischen Lesung <em style={{ color: "var(--text)" }}>'Der Klang des lebendigen Lichts'</em> erleben Sie die erstaunliche Lebensgeschichte dieser außergewöhnlichen Ordensfrau mit Zitaten, Gesängen und Musik auf Originalklang-Instrumenten wie <em style={{ color: "var(--text)" }}>Psalterium, Scheitholz, Handorgel, Monochord</em> und <em style={{ color: "var(--text)" }}>Saitentamburin</em> – eine faszinierende Zeitreise ins hohe Mittelalter und in die fast 1000jährige Geschichte über Spiritualität, Natur, Mensch, Musik und Mystik.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Modern Mystic Music */}
-      <section className="py-24 bg-[#FFF8F0]" id="music">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2
-                className="text-4xl font-bold text-stone-900 mb-6"
-                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
+      {/* ── GALERIE ───────────────────────────────────────── */}
+      <section className="py-12 sm:py-20 px-5 sm:px-6" style={{ backgroundColor: "var(--sage)" }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="sr text-center mb-12">
+            <p
+              className="text-[10px] uppercase tracking-[0.3em] mb-4"
+              style={{ color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}
+            >
+              Galerie
+            </p>
+            <h2
+              style={{
+                fontFamily: "var(--font-heading), Georgia, serif",
+                fontWeight: 400,
+                fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
+                letterSpacing: "0.06em",
+                color: "var(--text)",
+              }}
+            >
+              Der Klang des lebendigen Lichts
+            </h2>
+            <span className="block mt-5 mx-auto" style={{ width: "50px", height: "1px", backgroundColor: "var(--gold)", opacity: 0.6 }} />
+          </div>
+
+          <div className="sr delay-1">
+            <Carousel />
+          </div>
+        </div>
+      </section>
+
+      {/* ── WEITERE ANGEBOTE ──────────────────────────────── */}
+      <section className="py-12 sm:py-20 px-5 sm:px-6" style={{ backgroundColor: "var(--bg)" }}>
+        <div className="max-w-4xl mx-auto">
+          <div className="sr text-center mb-14">
+            <p
+              className="text-[10px] uppercase tracking-[0.3em] mb-4"
+              style={{ color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}
+            >
+              Entdecken
+            </p>
+            <span className="block mx-auto" style={{ width: "50px", height: "1px", backgroundColor: "var(--gold)", opacity: 0.5 }} />
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-6">
+            {/* Vale Retro Podcast */}
+            <div
+              className="sr delay-1 p-7"
+              style={{ border: "1px solid rgba(166,137,77,0.18)", backgroundColor: "var(--bg)" }}
+            >
+              <div className="mb-4">
+                <Youtube className="w-5 h-5" style={{ color: "var(--gold)" }} />
+              </div>
+              <p
+                className="text-sm mb-2"
+                style={{ fontFamily: "var(--font-heading), Georgia, serif", color: "var(--text)", letterSpacing: "0.05em", fontSize: "1.05rem" }}
+              >
+                Vale Retro
+              </p>
+              <p
+                className="text-[10px] uppercase tracking-[0.15em] mb-3"
+                style={{ color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}
+              >
+                Podcast
+              </p>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}>
+                Kurzvideos mit Originalzitaten der Hildegard von Bingen aus der Doppel-CD „Der Klang des lebendigen Lichts".
+              </p>
+              <a
+                href="https://www.youtube.com/playlist?list=PLadxowpwU-7AWbopuRKv3wxB7wNSQoXCk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] uppercase tracking-[0.18em] transition-opacity hover:opacity-60"
+                style={{ color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}
+              >
+                Auf YouTube ansehen →
+              </a>
+            </div>
+
+            {/* Modern Mystic Music */}
+            <div
+              className="sr delay-2 p-7"
+              style={{ border: "1px solid rgba(166,137,77,0.18)", backgroundColor: "var(--bg)" }}
+            >
+              <div className="mb-4">
+                <Music className="w-5 h-5" style={{ color: "var(--gold)" }} />
+              </div>
+              <p
+                className="text-sm mb-2"
+                style={{ fontFamily: "var(--font-heading), Georgia, serif", color: "var(--text)", letterSpacing: "0.05em", fontSize: "1.05rem" }}
               >
                 Modern Mystic Music
-              </h2>
-              <div className="w-16 h-1 bg-[#B8860B] mb-8 rounded-full" />
-              <p className="text-xl text-stone-700 leading-relaxed mb-6">
-                „Modern Mystic Music" vereint die alte Weisheit der Hildegard von Bingen
-                mit zeitgenössischen Klängen. Originalgesänge aus dem Mittelalter werden
-                neu interpretiert und mit modernen Elementen verbunden.
               </p>
-              <p className="text-xl text-stone-700 leading-relaxed mb-8">
-                Eine einzigartige musikalische Reise, die Vergangenheit und Gegenwart
-                verbindet und die zeitlose Kraft der Hildegard-Musik erlebbar macht.
+              <p
+                className="text-[10px] uppercase tracking-[0.15em] mb-3"
+                style={{ color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}
+              >
+                Neuinterpretation
+              </p>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}>
+                Hildegards Originalgesänge neu interpretiert – mittelalterliche Mystik trifft zeitgenössische Klangwelt.
               </p>
               <Link
-                href="#"
-                className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#9A7009] text-white font-bold px-6 py-3.5 rounded-xl transition-colors min-h-[52px]"
+                href="/audio-shop"
+                className="text-[11px] uppercase tracking-[0.18em] transition-opacity hover:opacity-60"
+                style={{ color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}
               >
-                <Music className="w-5 h-5" />
-                Videos auf YouTube ansehen
+                Im Audio Shop →
               </Link>
             </div>
-            <div>
-              <div className="bg-gradient-to-br from-[#FAF0DC] via-[#E8CC88] to-[#B8860B] rounded-3xl p-10 flex items-center justify-center h-72">
-                <div className="text-center">
-                  <Music className="w-16 h-16 text-white mx-auto mb-4" />
-                  <p className="text-white font-bold text-xl" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
-                    Modern Mystic Music
-                  </p>
-                  <p className="text-white/80 mt-2">Videos demnächst verfügbar</p>
-                </div>
+
+            {/* Audio Shop */}
+            <div
+              className="sr delay-3 p-7"
+              style={{ border: "1px solid rgba(166,137,77,0.18)", backgroundColor: "var(--bg)" }}
+            >
+              <div className="mb-4">
+                <ShoppingBag className="w-5 h-5" style={{ color: "var(--gold)" }} />
               </div>
+              <p
+                className="text-sm mb-2"
+                style={{ fontFamily: "var(--font-heading), Georgia, serif", color: "var(--text)", letterSpacing: "0.05em", fontSize: "1.05rem" }}
+              >
+                Hildegard Original
+              </p>
+              <p
+                className="text-[10px] uppercase tracking-[0.15em] mb-3"
+                style={{ color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}
+              >
+                Originalgesang · ab 3,99 €
+              </p>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}>
+                O viridissima virga, O quam mirabilis, O ignis spiritus und Ave Maria – authentisch aufgenommen.
+              </p>
+              <Link
+                href="/audio-shop"
+                className="text-[11px] uppercase tracking-[0.18em] transition-opacity hover:opacity-60"
+                style={{ color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}
+              >
+                Zum Shop →
+              </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── FOOTER CTA ────────────────────────────────────── */}
+      <section className="py-10 sm:py-16 px-5 sm:px-6" style={{ backgroundColor: "var(--sage)" }}>
+        <div className="max-w-2xl mx-auto text-center">
+          <span className="gold-line block mx-auto mb-8" />
+          <p
+            className="text-base leading-relaxed mb-8"
+            style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}
+          >
+            Interesse an einer szenischen Lesung oder einem Workshop?
+          </p>
+          <Link href="/kontakt" className="btn-gold-outline">
+            Buchungsanfrage stellen
+          </Link>
         </div>
       </section>
     </>

@@ -70,7 +70,7 @@ export default function UeberMichPage() {
               </p>
 
               <Link
-                href="mailto:antonia@braditsch.at?subject=Termin vereinbaren"
+                href="/termine"
                 className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#9A7009] text-white font-bold px-6 py-3.5 rounded-xl transition-colors min-h-[52px]"
               >
                 <Calendar className="w-4 h-4" />

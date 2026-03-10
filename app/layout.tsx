@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import ChatWidget from "@/components/chat/ChatWidget";
+import { CartProvider } from "@/context/CartContext";
+import CartSidebar from "@/components/shop/CartSidebar";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -60,10 +62,13 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${cormorant.variable} ${lora.variable} ${marcellus.variable}`}>
       <body className="bg-[#FFF8F0] text-stone-900 antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <ChatWidget />
+        <CartProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <ChatWidget />
+          <CartSidebar />
+        </CartProvider>
       </body>
     </html>
   );

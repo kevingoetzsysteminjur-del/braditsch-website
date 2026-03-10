@@ -1,109 +1,186 @@
 import Link from "next/link";
-import { Calendar, Star } from "lucide-react";
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 
-function ImagePlaceholder({ className = "" }: { className?: string }) {
-  return <div className={`bg-gradient-to-br from-[#F5E6C8] via-[#E8D0A0] to-[#B8860B] ${className}`} />;
-}
+const qualities = [
+  "Lichtvolle, liebevolle Kommunikation",
+  "Personalisierte Botschaften für dich",
+  "Orientierung und innere Klarheit",
+  "Verbindung mit der geistigen Welt",
+];
 
 export default function MedialitaetPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative h-72 sm:h-96">
-        <ImagePlaceholder className="absolute inset-0 w-full h-full" />
-        <div className="absolute inset-0 bg-black/25" />
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-          <h1
-            className="text-5xl sm:text-7xl font-bold text-white mb-4 tracking-wide"
-            style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
+      {/* Page Hero */}
+      <section
+        className="relative flex flex-col items-center justify-center text-center px-6 overflow-hidden"
+        style={{ minHeight: "55vh", backgroundColor: "var(--bg)" }}
+      >
+        <div className="grain absolute inset-0 pointer-events-none" />
+        <div className="relative z-10 max-w-2xl mx-auto pt-32 pb-20">
+          <p
+            className="text-[10px] uppercase tracking-[0.3em] mb-6"
+            style={{ fontFamily: "var(--font-body), Georgia, serif", color: "var(--gold)" }}
           >
-            MEDIALITÄT
+            Angebote
+          </p>
+          <h1
+            className="mb-6"
+            style={{
+              fontFamily: "var(--font-heading), Georgia, serif",
+              fontWeight: 300,
+              fontSize: "clamp(2.8rem, 8vw, 5.5rem)",
+              letterSpacing: "0.2em",
+              color: "var(--text)",
+              lineHeight: 1.1,
+            }}
+          >
+            Medialität
           </h1>
-          <p className="text-white/90 text-xl max-w-lg">
-            Vermittlerin zwischen den Welten
+          <span className="gold-line mb-8 block" />
+          <p
+            className="text-base sm:text-lg leading-relaxed"
+            style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}
+          >
+            In der medialen Arbeit bin ich Vermittlerin zwischen der materiellen und der geistigen Welt –
+            lichtvolle Energien, die genau zur richtigen Zeit zu dir kommen.
           </p>
         </div>
       </section>
 
-      {/* Inhalt */}
-      <section className="py-24 bg-[#FFF8F0]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <h2
-                className="text-4xl font-bold text-stone-900 mb-6"
-                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
-              >
-                Was ist mediale Arbeit?
-              </h2>
-              <div className="w-16 h-1 bg-[#B8860B] mb-8 rounded-full" />
+      {/* Content */}
+      <section className="py-24 px-6" style={{ backgroundColor: "var(--sage)" }}>
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1.1fr_1fr] gap-20 items-center">
 
-              <p className="text-xl text-stone-700 leading-relaxed mb-6">
-                In der medialen Arbeit bin ich Vermittlerin zwischen der materiellen und der
-                geistigen Welt. Mit dieser Fähigkeit kann ich lichtvolle Energien wahrnehmen
-                und damit in Kontakt treten.
-              </p>
-              <p className="text-xl text-stone-700 leading-relaxed mb-6">
-                Personalisierte Nachrichten kommen <strong>FÜR DICH</strong> genau zur richtigen
-                Zeit als Unterstützung aus der geistigen Welt. Diese Begegnungen sind immer
-                liebevoll, nährend und aufbauend.
-              </p>
-              <p className="text-xl text-stone-700 leading-relaxed mb-10">
-                Die mediale Arbeit kann dir helfen, Klarheit zu finden, Orientierung zu bekommen,
-                Trauer zu verarbeiten und dich mit deiner eigenen Seele und mit geliebten
-                Menschen auf der anderen Seite zu verbinden.
-              </p>
+          {/* Text */}
+          <div>
+            <p
+              className="text-[10px] uppercase tracking-[0.3em] mb-6"
+              style={{ fontFamily: "var(--font-body), Georgia, serif", color: "var(--gold)" }}
+            >
+              Was ist mediale Arbeit?
+            </p>
+            <h2
+              className="mb-3"
+              style={{
+                fontFamily: "var(--font-heading), Georgia, serif",
+                fontWeight: 400,
+                fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)",
+                letterSpacing: "0.04em",
+                color: "var(--text)",
+              }}
+            >
+              Zwischen den Welten
+            </h2>
+            <span className="block w-12 h-px mb-10" style={{ backgroundColor: "var(--gold)", opacity: 0.6 }} />
 
-              <div className="space-y-4 mb-10">
-                {[
-                  "Lichtvolle, liebevolle Kommunikation",
-                  "Personalisierte Botschaften für dich",
-                  "Orientierung und innere Klarheit",
-                  "Verbindung mit der geistigen Welt",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <Star className="w-5 h-5 text-[#B8860B] shrink-0" fill="currentColor" />
-                    <span className="text-stone-700 text-lg">{item}</span>
-                  </div>
-                ))}
-              </div>
+            <p
+              className="mb-6 leading-relaxed text-base"
+              style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}
+            >
+              Mit dieser Fähigkeit kann ich lichtvolle Energien wahrnehmen und damit in Kontakt treten.
+              Personalisierte Nachrichten kommen für dich genau zur richtigen Zeit als Unterstützung
+              aus der geistigen Welt.
+            </p>
+            <p
+              className="mb-10 leading-relaxed text-base"
+              style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}
+            >
+              Diese Begegnungen sind immer liebevoll, nährend und aufbauend. Die mediale Arbeit kann dir
+              helfen, Klarheit zu finden, Orientierung zu bekommen und dich mit deiner eigenen Seele
+              zu verbinden.
+            </p>
 
-              <Link
-                href="mailto:antonia@braditsch.at?subject=Termin vereinbaren - Medialität"
-                className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#9A7009] text-white font-bold px-8 py-4 rounded-xl transition-colors min-h-[56px] text-lg"
-              >
-                <Calendar className="w-5 h-5" />
-                Termin vereinbaren
-              </Link>
+            <div className="space-y-4 mb-12">
+              {qualities.map((item) => (
+                <div key={item} className="flex items-center gap-4">
+                  <span className="w-px h-4 shrink-0" style={{ backgroundColor: "var(--gold)" }} />
+                  <span
+                    className="text-sm"
+                    style={{ color: "var(--text)", fontFamily: "var(--font-body), Georgia, serif" }}
+                  >
+                    {item}
+                  </span>
+                </div>
+              ))}
             </div>
 
-            <div className="space-y-6">
-              <ImagePlaceholder className="w-full h-80 rounded-3xl shadow-xl" />
+            <Link
+              href="mailto:antonia@braditsch.at?subject=Termin vereinbaren – Medialität"
+              className="btn-gold-outline"
+            >
+              Termin vereinbaren <ChevronRight className="w-3 h-3" />
+            </Link>
+          </div>
 
-              <div className="bg-white rounded-3xl p-8 border border-[#E8D8C4] shadow-sm">
-                <h3
-                  className="text-2xl font-bold text-stone-900 mb-4"
-                  style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
-                >
-                  Wichtiger Hinweis
-                </h3>
-                <p className="text-stone-600 leading-relaxed">
-                  Die mediale Arbeit ist eine spirituelle Praxis und ersetzt keine medizinische
-                  oder psychologische Behandlung. Sie dient der persönlichen Orientierung und
-                  dem inneren Wachstum. Alle Informationen sind als inspirative Impulse zu
-                  verstehen.
-                </p>
+          {/* Visual */}
+          <div className="flex flex-col gap-8">
+            <div className="flex justify-center">
+              <div
+                className="relative overflow-hidden shadow-lg"
+                style={{
+                  width: "clamp(200px, 28vw, 280px)",
+                  height: "clamp(200px, 28vw, 280px)",
+                  borderRadius: "50%",
+                }}
+              >
+                <Image
+                  src="/MEDIALITÄT.avif"
+                  alt="Medialität – Antonia Braditsch"
+                  fill
+                  className="object-cover"
+                  sizes="280px"
+                />
               </div>
+            </div>
+
+            {/* Note card */}
+            <div
+              className="p-8"
+              style={{
+                backgroundColor: "var(--bg)",
+                border: "1px solid rgba(166,137,77,0.2)",
+              }}
+            >
+              <p
+                className="text-[10px] uppercase tracking-[0.2em] mb-3"
+                style={{ fontFamily: "var(--font-body), Georgia, serif", color: "var(--gold)" }}
+              >
+                Hinweis
+              </p>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}
+              >
+                Die mediale Arbeit ist eine spirituelle Praxis und ersetzt keine medizinische
+                oder psychologische Behandlung. Sie dient der persönlichen Orientierung und
+                dem inneren Wachstum.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Hinweis */}
-      <section className="py-10 bg-[#F5EDE0]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-stone-600 text-base">
-            <strong>Gesetzlicher Hinweis:</strong> Meine Anwendungen ersetzen keine ärztliche Therapie oder Psychotherapie.
+      {/* Quote */}
+      <section className="py-24 px-6" style={{ backgroundColor: "var(--bg)" }}>
+        <div className="max-w-2xl mx-auto text-center">
+          <p
+            className="italic text-lg sm:text-xl leading-relaxed mb-8"
+            style={{ color: "var(--text-muted)", fontFamily: "var(--font-heading), Georgia, serif", letterSpacing: "0.02em" }}
+          >
+            Lichtvolle Energien, die genau zur richtigen Zeit zu dir kommen.
+          </p>
+          <span className="gold-line" />
+        </div>
+      </section>
+
+      {/* Legal note */}
+      <section className="py-8 px-6" style={{ backgroundColor: "var(--sage)" }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}>
+            <span style={{ fontStyle: "italic" }}>Gesetzlicher Hinweis:</span>{" "}
+            Meine Anwendungen ersetzen keine ärztliche Therapie oder Psychotherapie.
           </p>
         </div>
       </section>
