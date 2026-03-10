@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, Heart, Star, Leaf } from "lucide-react";
 
 function ImagePlaceholder({ className = "", variant = "warm" }: { className?: string; variant?: "gold" | "warm" | "sand" | "rose" | "creme" }) {
@@ -39,8 +40,15 @@ export default function UeberMichPage() {
       <section className="py-24 bg-[#FFF8F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <ImagePlaceholder variant="rose" className="w-full h-[500px] rounded-3xl shadow-2xl" />
+            <div className="relative w-full h-[500px] shadow-2xl overflow-hidden" style={{ borderRadius: "12px" }}>
+              <Image
+                src="/images/ueber-mich.jpg"
+                alt="Antonia Braditsch"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
             </div>
             <div>
               <h2

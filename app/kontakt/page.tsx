@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Mail, Phone } from "lucide-react";
 
 export default function KontaktPage() {
@@ -12,11 +13,25 @@ export default function KontaktPage() {
         <div className="grain absolute inset-0 pointer-events-none" />
         <div className="relative z-10 max-w-xl mx-auto pt-32 pb-16">
           <p
-            className="text-[10px] uppercase tracking-[0.3em] mb-6"
-            style={{ fontFamily: "var(--font-body), Georgia, serif", color: "var(--gold)" }}
+            className="text-[10px] uppercase tracking-[0.3em] mb-8"
+            style={{ fontFamily: "var(--font-body), Georgia, serif", color: "var(--gold)", paddingLeft: "0.3em" }}
           >
             Kontakt
           </p>
+
+          {/* Logo */}
+          <div className="flex justify-center mb-8">
+            <Image
+              src="/images/logo-transparent.png"
+              alt="Vibration Codes Logo"
+              width={180}
+              height={180}
+              className="object-contain"
+              style={{ opacity: 0.55 }}
+              priority
+            />
+          </div>
+
           <h1
             className="mb-6"
             style={{
@@ -127,18 +142,8 @@ export default function KontaktPage() {
             </div>
           </div>
 
-          {/* CTA to booking */}
           <div className="text-center">
-            <span className="gold-line mb-8 block" />
-            <p
-              className="text-sm mb-6"
-              style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}
-            >
-              Oder buche deinen Termin direkt online:
-            </p>
-            <Link href="/termine" className="btn-gold-outline">
-              Zur Terminbuchung
-            </Link>
+            <span className="gold-line block" />
           </div>
         </div>
       </section>

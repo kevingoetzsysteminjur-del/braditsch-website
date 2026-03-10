@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Medialität", href: "/medialitaet" },
   { label: "Hildegard", href: "/hildegard-von-bingen" },
   { label: "Audio Shop", href: "/audio-shop" },
+  { label: "Galerie", href: "/galerie" },
   { label: "Termine", href: "/termine" },
   { label: "Kontakt", href: "/kontakt" },
 ];
@@ -34,16 +35,26 @@ export default function Navbar() {
 
   return (
     <>
+      <style>{`
+        @media (min-width: 1100px) {
+          .nav-desktop { display: flex !important; }
+          .nav-hamburger { display: none !important; }
+          .nav-cta { display: inline-flex !important; }
+        }
+      `}</style>
+
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          backgroundColor: scrolled ? "rgba(250,247,242,0.95)" : "transparent",
+          backgroundColor: scrolled ? "rgba(250,247,242,0.96)" : "transparent",
           backdropFilter: scrolled ? "blur(16px)" : "none",
           borderBottom: scrolled ? "1px solid rgba(166,137,77,0.12)" : "1px solid transparent",
         }}
       >
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 xl:px-10 flex items-center justify-between h-16 sm:h-20">
-
+        <div
+          className="mx-auto flex items-center justify-between"
+          style={{ maxWidth: "1400px", padding: "0 40px", height: "72px" }}
+        >
           {/* Logo */}
           <Link
             href="/"
@@ -52,22 +63,37 @@ export default function Navbar() {
               fontFamily: "var(--font-heading), Georgia, serif",
               color: "var(--text)",
               fontWeight: 400,
-              fontSize: "clamp(1rem, 2vw, 1.125rem)",
-              letterSpacing: "0.14em",
+              fontSize: "16px",
+              letterSpacing: "0.05em",
               textDecoration: "none",
+              whiteSpace: "nowrap",
             }}
           >
             Antonia Braditsch
           </Link>
 
-          {/* Desktop Nav – only on xl (1280px+) */}
-          <nav className="hidden xl:flex items-center gap-8">
+          {/* Desktop Nav – 1100px+ */}
+          <nav
+            className="nav-desktop hidden items-center"
+            style={{ gap: "28px", marginLeft: "40px", flex: 1, justifyContent: "center" }}
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[12px] uppercase tracking-[0.1em] transition-opacity hover:opacity-50 whitespace-nowrap"
-                style={{ fontFamily: "var(--font-body), Georgia, serif", color: "var(--text)" }}
+                style={{
+                  fontFamily: "var(--font-body), Georgia, serif",
+                  color: "var(--text)",
+                  fontSize: "12px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.12em",
+                  textDecoration: "none",
+                  opacity: 1,
+                  whiteSpace: "nowrap",
+                  transition: "opacity 0.2s ease",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.45"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
               >
                 {link.label}
               </Link>
@@ -75,21 +101,12 @@ export default function Navbar() {
           </nav>
 
           {/* Right actions */}
-          <div className="flex items-center gap-3 sm:gap-4">
-            {/* CTA – only desktop */}
-            <Link
-              href="/termine"
-              className="hidden xl:inline-flex btn-gold-outline"
-              style={{ padding: "10px 22px", fontSize: "10px", minHeight: "40px" }}
-            >
-              Termin vereinbaren
-            </Link>
-
+          <div className="flex items-center" style={{ gap: "0", marginLeft: "40px" }}>
             {/* Cart */}
             <button
               onClick={() => setCartOpen(true)}
-              className="relative flex items-center justify-center w-10 h-10 transition-opacity hover:opacity-60"
-              style={{ color: "var(--text)" }}
+              className="relative flex items-center justify-center transition-opacity hover:opacity-60"
+              style={{ color: "var(--text)", width: "40px", height: "40px", marginLeft: "8px" }}
               aria-label="Warenkorb"
             >
               <ShoppingBag
@@ -97,20 +114,26 @@ export default function Navbar() {
               />
               {totalItems > 0 && (
                 <span
-                  className="absolute top-0.5 right-0.5 w-4 h-4 rounded-full text-[9px] flex items-center justify-center"
-                  style={{ backgroundColor: "var(--gold)", color: "#fff", fontFamily: "var(--font-body), Georgia, serif" }}
+                  className="absolute rounded-full flex items-center justify-center"
+                  style={{
+                    top: "2px", right: "2px",
+                    width: "15px", height: "15px",
+                    backgroundColor: "var(--gold)", color: "#fff",
+                    fontSize: "9px",
+                    fontFamily: "var(--font-body), Georgia, serif",
+                  }}
                 >
                   {totalItems}
                 </span>
               )}
             </button>
 
-            {/* Hamburger – below xl */}
+            {/* Hamburger – below 1100px */}
             <button
               onClick={() => setMobileOpen(true)}
-              className="xl:hidden flex items-center justify-center w-10 h-10 transition-opacity hover:opacity-60"
+              className="nav-hamburger flex items-center justify-center transition-opacity hover:opacity-60"
               aria-label="Menü öffnen"
-              style={{ color: "var(--text)" }}
+              style={{ color: "var(--text)", width: "40px", height: "40px", marginLeft: "4px" }}
             >
               <Menu className="w-5 h-5" />
             </button>
@@ -118,7 +141,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile / Tablet Full-Screen Overlay */}
+      {/* Mobile / Tablet Overlay */}
       <div
         className="fixed inset-0 z-[100] flex flex-col transition-all duration-500"
         style={{
@@ -129,42 +152,46 @@ export default function Navbar() {
         }}
       >
         {/* Top bar */}
-        <div className="flex items-center justify-between px-5 sm:px-8 h-20 shrink-0">
+        <div className="flex items-center justify-between shrink-0" style={{ padding: "0 24px", height: "72px" }}>
           <span
             style={{
               fontFamily: "var(--font-heading), Georgia, serif",
               color: "var(--text)",
               fontWeight: 400,
-              fontSize: "clamp(1rem, 2vw, 1.125rem)",
-              letterSpacing: "0.14em",
+              fontSize: "16px",
+              letterSpacing: "0.05em",
             }}
           >
             Antonia Braditsch
           </span>
           <button
             onClick={() => setMobileOpen(false)}
-            className="flex items-center justify-center w-11 h-11 transition-opacity hover:opacity-60"
+            className="flex items-center justify-center transition-opacity hover:opacity-60"
             aria-label="Menü schließen"
-            style={{ color: "var(--text)" }}
+            style={{ color: "var(--text)", width: "44px", height: "44px" }}
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Gold divider */}
-        <div className="mx-5 sm:mx-8" style={{ height: "1px", backgroundColor: "var(--gold)", opacity: 0.25 }} />
+        <div style={{ height: "1px", backgroundColor: "var(--gold)", opacity: 0.2, margin: "0 24px" }} />
 
         {/* Links */}
-        <nav className="flex-1 flex flex-col items-center justify-center gap-6 px-6 py-10 overflow-y-auto">
+        <nav className="flex-1 flex flex-col items-center justify-center overflow-y-auto" style={{ gap: "24px", padding: "40px 24px" }}>
           {navLinks.map((link, i) => (
             <Link
               key={link.label}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="text-3xl sm:text-4xl font-light tracking-[0.06em] transition-opacity hover:opacity-50 min-h-[48px] flex items-center"
+              className="flex items-center transition-opacity hover:opacity-50"
               style={{
                 fontFamily: "var(--font-heading), Georgia, serif",
                 color: "var(--text)",
+                fontSize: "clamp(1.6rem, 6vw, 2.4rem)",
+                fontWeight: 300,
+                letterSpacing: "0.06em",
+                minHeight: "48px",
+                textDecoration: "none",
                 transitionDelay: mobileOpen ? `${i * 40}ms` : "0ms",
               }}
             >
@@ -175,16 +202,15 @@ export default function Navbar() {
           <Link
             href="/termine"
             onClick={() => setMobileOpen(false)}
-            className="btn-gold-outline mt-6"
+            className="btn-gold-outline"
+            style={{ marginTop: "16px" }}
           >
             Termin vereinbaren
           </Link>
         </nav>
 
-        {/* Bottom */}
-        <div className="px-6 pb-10 text-center shrink-0">
-          <p className="text-[11px] uppercase tracking-[0.15em] opacity-40"
-            style={{ fontFamily: "var(--font-body), Georgia, serif", color: "var(--text)" }}>
+        <div className="shrink-0 text-center" style={{ padding: "0 24px 32px" }}>
+          <p style={{ fontFamily: "var(--font-body), Georgia, serif", color: "var(--text)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.15em", opacity: 0.35 }}>
             antonia@braditsch.at
           </p>
         </div>

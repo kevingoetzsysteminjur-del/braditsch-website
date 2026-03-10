@@ -47,28 +47,44 @@ export default function Home() {
         />
 
         <div className="relative z-10 flex flex-col items-center pt-24 pb-10">
+          {/* Logo */}
           <AnimateIn delay={0}>
-            <h1 className="hero-name mb-10">
+            <div style={{ marginBottom: "40px" }}>
+              <Image
+                src="/images/logo-transparent.png"
+                alt="Vibration Codes Logo"
+                width={200}
+                height={200}
+                className="mx-auto object-contain"
+                style={{ maxWidth: "200px", width: "100%", height: "auto", opacity: 0.6 }}
+                priority
+              />
+            </div>
+          </AnimateIn>
+
+          <AnimateIn delay={150}>
+            <h1 className="hero-name mb-8">
               Antonia Braditsch
             </h1>
           </AnimateIn>
 
           {/* Three gold dots */}
-          <AnimateIn delay={200}>
+          <AnimateIn delay={280}>
             <p
-              className="mb-10 tracking-[0.6em] select-none"
-              style={{ color: "var(--gold)", opacity: 0.4, fontSize: "0.6rem", letterSpacing: "0.8em" }}
+              className="mb-8 select-none"
+              style={{ color: "var(--gold)", opacity: 0.35, fontSize: "0.55rem", letterSpacing: "1em" }}
             >
               · · ·
             </p>
           </AnimateIn>
 
-          <AnimateIn delay={350}>
+          <AnimateIn delay={400}>
             <p
-              className="uppercase text-[11px] sm:text-xs mb-14"
+              className="uppercase mb-14"
               style={{
                 fontFamily: "var(--font-accent), Georgia, serif",
                 color: "var(--gold)",
+                fontSize: "11px",
                 letterSpacing: "0.28em",
               }}
             >
@@ -76,7 +92,7 @@ export default function Home() {
             </p>
           </AnimateIn>
 
-          <AnimateIn delay={500}>
+          <AnimateIn delay={550}>
             <Link href="/termine" className="btn-gold-outline">
               Termin vereinbaren
             </Link>
