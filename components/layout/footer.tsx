@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <h3
               className="text-2xl font-bold text-white mb-3"
-              style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+              style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
             >
               Antonia Braditsch
             </h3>

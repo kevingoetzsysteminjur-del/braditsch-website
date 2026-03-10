@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Calendar } from "lucide-react";
 
-function ImagePlaceholder({ className = "", variant = "lila" }: { className?: string; variant?: "gold" | "lila" | "creme" | "mixed" }) {
+function ImagePlaceholder({ className = "", variant = "warm" }: { className?: string; variant?: "gold" | "warm" | "sand" | "rose" | "creme" }) {
   const gradients = {
     gold: "bg-gradient-to-br from-[#F5E6C8] via-[#E8C97A] to-[#C9A44A]",
-    lila: "bg-gradient-to-br from-[#E8DEFF] via-[#C4A8E0] to-[#9B7CB9]",
+    warm: "bg-gradient-to-br from-[#F7EED8] via-[#EDD9B0] to-[#D4AF7A]",
     creme: "bg-gradient-to-br from-[#FFF8F0] via-[#F5EDE0] to-[#EAD9C0]",
-    mixed: "bg-gradient-to-br from-[#F5E6C8] via-[#D4B8E8] to-[#9B7CB9]",
+    sand: "bg-gradient-to-br from-[#F5ECD8] via-[#E8D5B0] to-[#C8A87A]",
+    rose: "bg-gradient-to-br from-[#F7EDEA] via-[#EDD5C8] to-[#C9A090]",
   };
   return <div className={`${gradients[variant]} ${className}`} />;
 }
@@ -16,12 +17,12 @@ export default function StimmePage() {
     <>
       {/* Hero */}
       <section className="relative h-72 sm:h-96">
-        <ImagePlaceholder variant="lila" className="absolute inset-0 w-full h-full" />
+        <ImagePlaceholder variant="rose" className="absolute inset-0 w-full h-full" />
         <div className="absolute inset-0 bg-black/25" />
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
           <h1
             className="text-5xl sm:text-7xl font-bold text-white mb-4 tracking-wide"
-            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
           >
             STIMME
           </h1>
@@ -55,12 +56,12 @@ export default function StimmePage() {
           {/* Magie der Stimme */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <ImagePlaceholder variant="lila" className="w-full h-72 rounded-3xl shadow-xl" />
+              <ImagePlaceholder variant="rose" className="w-full h-72 rounded-3xl shadow-xl" />
             </div>
             <div>
               <h2
                 className="text-3xl font-bold text-stone-900 mb-3"
-                style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
               >
                 Magie der Stimme
               </h2>
@@ -77,7 +78,7 @@ export default function StimmePage() {
               </p>
               <Link
                 href="mailto:antonia@braditsch.at?subject=Termin vereinbaren - Magie der Stimme"
-                className="inline-flex items-center gap-2 bg-[#9B7CB9] hover:bg-[#8264A8] text-white font-bold px-6 py-3.5 rounded-xl transition-colors min-h-[52px]"
+                className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#9A7009] text-white font-bold px-6 py-3.5 rounded-xl transition-colors min-h-[52px]"
               >
                 <Calendar className="w-4 h-4" />
                 Termin vereinbaren
@@ -88,15 +89,15 @@ export default function StimmePage() {
           {/* Heilsames Singen */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="lg:col-start-2 lg:row-start-1">
-              <ImagePlaceholder variant="mixed" className="w-full h-72 rounded-3xl shadow-xl" />
+              <ImagePlaceholder variant="warm" className="w-full h-72 rounded-3xl shadow-xl" />
             </div>
             <div className="lg:col-start-1 lg:row-start-1">
-              <span className="inline-block bg-[#F5EDE0] text-[#9B7CB9] text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-[#E8D8C4]">
+              <span className="inline-block bg-[#F5EDE0] text-[#B8860B] text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-[#E8D8C4]">
                 Offene Gruppe
               </span>
               <h2
                 className="text-3xl font-bold text-stone-900 mb-3"
-                style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
               >
                 Heilsames Singen
               </h2>
@@ -117,7 +118,7 @@ export default function StimmePage() {
               </p>
               <Link
                 href="mailto:antonia@braditsch.at?subject=Anmeldung Heilsames Singen"
-                className="inline-flex items-center gap-2 bg-[#9B7CB9] hover:bg-[#8264A8] text-white font-bold px-6 py-3.5 rounded-xl transition-colors min-h-[52px]"
+                className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#9A7009] text-white font-bold px-6 py-3.5 rounded-xl transition-colors min-h-[52px]"
               >
                 <Calendar className="w-4 h-4" />
                 Jetzt anmelden

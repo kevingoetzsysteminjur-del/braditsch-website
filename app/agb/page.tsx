@@ -4,7 +4,7 @@ export default function AgbPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1
           className="text-4xl font-bold text-stone-900 mb-4"
-          style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+          style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
         >
           AGBs &amp; Kundeninfo
         </h1>
@@ -13,7 +13,7 @@ export default function AgbPage() {
         <div className="bg-white rounded-3xl p-8 border border-[#E8D8C4] shadow-sm space-y-8 text-stone-700 text-lg leading-relaxed">
 
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               1. Terminvereinbarung & Absagen
             </h2>
             <p className="mb-3">
@@ -28,7 +28,7 @@ export default function AgbPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               2. Zahlung
             </h2>
             <p>
@@ -38,7 +38,7 @@ export default function AgbPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               3. Gesundheitlicher Hinweis
             </h2>
             <p className="font-semibold text-stone-900 mb-2">Wichtig:</p>
@@ -54,7 +54,7 @@ export default function AgbPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               4. Vertraulichkeit
             </h2>
             <p>
@@ -64,7 +64,7 @@ export default function AgbPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               5. Kontakt bei Fragen
             </h2>
             <p>

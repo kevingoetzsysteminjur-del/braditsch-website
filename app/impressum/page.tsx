@@ -4,7 +4,7 @@ export default function ImpressumPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1
           className="text-4xl font-bold text-stone-900 mb-4"
-          style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+          style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
         >
           Impressum
         </h1>
@@ -12,7 +12,7 @@ export default function ImpressumPage() {
 
         <div className="bg-white rounded-3xl p-8 border border-[#E8D8C4] shadow-sm space-y-8 text-stone-700 text-lg leading-relaxed">
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               Angaben gemäß § 5 ECG
             </h2>
             <p>Antonia Braditsch</p>
@@ -22,7 +22,7 @@ export default function ImpressumPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               Kontakt
             </h2>
             <p>
@@ -46,21 +46,21 @@ export default function ImpressumPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               Unternehmensgegenstand
             </h2>
             <p>Klangtherapie, Stimmarbeit, mediale Begleitung</p>
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               Zuständige Behörde
             </h2>
             <p>Bezirkshauptmannschaft Wiener Neustadt-Land</p>
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               Haftungsausschluss
             </h2>
             <p>

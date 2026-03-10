@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Calendar } from "lucide-react";
 
-function ImagePlaceholder({ className = "", variant = "gold" }: { className?: string; variant?: "gold" | "lila" | "creme" | "mixed" }) {
+function ImagePlaceholder({ className = "", variant = "gold" }: { className?: string; variant?: "gold" | "warm" | "sand" | "rose" | "creme" }) {
   const gradients = {
     gold: "bg-gradient-to-br from-[#F5E6C8] via-[#E8C97A] to-[#C9A44A]",
-    lila: "bg-gradient-to-br from-[#E8DEFF] via-[#C4A8E0] to-[#9B7CB9]",
+    warm: "bg-gradient-to-br from-[#F7EED8] via-[#EDD9B0] to-[#D4AF7A]",
     creme: "bg-gradient-to-br from-[#FFF8F0] via-[#F5EDE0] to-[#EAD9C0]",
-    mixed: "bg-gradient-to-br from-[#F5E6C8] via-[#D4B8E8] to-[#9B7CB9]",
+    sand: "bg-gradient-to-br from-[#F5ECD8] via-[#E8D5B0] to-[#C8A87A]",
+    rose: "bg-gradient-to-br from-[#F7EDEA] via-[#EDD5C8] to-[#C9A090]",
   };
   return <div className={`${gradients[variant]} ${className}`} />;
 }
@@ -23,14 +24,14 @@ const angebote = [
     title: "Klangliege und Körpermonochord",
     duration: "50 Minuten",
     price: "75€",
-    variant: "lila" as const,
+    variant: "warm" as const,
     text: "Auf der Klangliege wirst du von unten durch die Saiten des Körpermonochords und von oben durch Klangschalen und weitere Instrumente in eine tiefe Entspannung geführt. Du spürst die Schwingungen mit deinem ganzen Körper – eine ganzheitliche Klangerfahrung für Körper, Geist und Seele, die tief entspannt und regeneriert.",
   },
   {
     title: "Kristallpyramide",
     duration: "40 Minuten",
     price: "60€",
-    variant: "mixed" as const,
+    variant: "sand" as const,
     text: "Die Bergkristall-Energie verbindet sich mit der besonderen geometrischen Form der Pyramide zu einer kraftvollen Klangerfahrung. Bergkristalle sind seit jeher bekannt für ihre reinigende und harmonisierende Wirkung auf Energiefelder. Diese Anwendung eignet sich ideal zur Energiearbeit und tiefen Entspannung.",
   },
   {
@@ -53,7 +54,7 @@ export default function KlangPage() {
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
           <h1
             className="text-5xl sm:text-7xl font-bold text-white mb-4 tracking-wide"
-            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
           >
             KLANG
           </h1>
@@ -99,7 +100,7 @@ export default function KlangPage() {
                 )}
                 <h2
                   className="text-3xl font-bold text-stone-900 mb-3"
-                  style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                  style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
                 >
                   {angebot.title}
                 </h2>

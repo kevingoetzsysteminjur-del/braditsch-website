@@ -18,7 +18,7 @@ export default function HildegardPage() {
           </p>
           <h1
             className="text-4xl sm:text-6xl font-bold text-stone-900 mb-4"
-            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
           >
             Hildegard von Bingen
           </h1>
@@ -35,7 +35,7 @@ export default function HildegardPage() {
             <div>
               <h2
                 className="text-4xl font-bold text-stone-900 mb-6"
-                style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
               >
                 Eine Visionärin für unsere Zeit
               </h2>
@@ -74,7 +74,7 @@ export default function HildegardPage() {
               </div>
               <h2
                 className="text-3xl font-bold text-stone-900 mb-4"
-                style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
               >
                 Vale Retro Podcast
               </h2>
@@ -96,7 +96,7 @@ export default function HildegardPage() {
             <div>
               <h3
                 className="text-2xl font-bold text-stone-900 mb-4"
-                style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
               >
                 Themen im Podcast
               </h3>
@@ -127,11 +127,11 @@ export default function HildegardPage() {
             <div>
               <h2
                 className="text-4xl font-bold text-stone-900 mb-6"
-                style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
               >
                 Modern Mystic Music
               </h2>
-              <div className="w-16 h-1 bg-[#9B7CB9] mb-8 rounded-full" />
+              <div className="w-16 h-1 bg-[#B8860B] mb-8 rounded-full" />
               <p className="text-xl text-stone-700 leading-relaxed mb-6">
                 „Modern Mystic Music" vereint die alte Weisheit der Hildegard von Bingen
                 mit zeitgenössischen Klängen. Originalgesänge aus dem Mittelalter werden
@@ -143,17 +143,17 @@ export default function HildegardPage() {
               </p>
               <Link
                 href="#"
-                className="inline-flex items-center gap-2 bg-[#9B7CB9] hover:bg-[#8264A8] text-white font-bold px-6 py-3.5 rounded-xl transition-colors min-h-[52px]"
+                className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#9A7009] text-white font-bold px-6 py-3.5 rounded-xl transition-colors min-h-[52px]"
               >
                 <Music className="w-5 h-5" />
                 Videos auf YouTube ansehen
               </Link>
             </div>
             <div>
-              <div className="bg-gradient-to-br from-[#E8DEFF] via-[#C4A8E0] to-[#9B7CB9] rounded-3xl p-10 flex items-center justify-center h-72">
+              <div className="bg-gradient-to-br from-[#FAF0DC] via-[#E8CC88] to-[#B8860B] rounded-3xl p-10 flex items-center justify-center h-72">
                 <div className="text-center">
                   <Music className="w-16 h-16 text-white mx-auto mb-4" />
-                  <p className="text-white font-bold text-xl" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+                  <p className="text-white font-bold text-xl" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
                     Modern Mystic Music
                   </p>
                   <p className="text-white/80 mt-2">Videos demnächst verfügbar</p>

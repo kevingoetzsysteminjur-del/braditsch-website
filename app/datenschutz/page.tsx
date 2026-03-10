@@ -4,7 +4,7 @@ export default function DatenschutzPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1
           className="text-4xl font-bold text-stone-900 mb-4"
-          style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+          style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
         >
           Datenschutzerklärung
         </h1>
@@ -12,7 +12,7 @@ export default function DatenschutzPage() {
 
         <div className="bg-white rounded-3xl p-8 border border-[#E8D8C4] shadow-sm space-y-8 text-stone-700 text-lg leading-relaxed">
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               1. Datenschutz auf einen Blick
             </h2>
             <p>
@@ -23,7 +23,7 @@ export default function DatenschutzPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               2. Verantwortliche Person
             </h2>
             <p>Antonia Braditsch</p>
@@ -32,7 +32,7 @@ export default function DatenschutzPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               3. Kontaktaufnahme
             </h2>
             <p>
@@ -44,7 +44,7 @@ export default function DatenschutzPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               4. Ihre Rechte
             </h2>
             <p className="mb-4">Ihnen stehen grundsätzlich folgende Rechte zu:</p>
@@ -66,7 +66,7 @@ export default function DatenschutzPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-stone-900 mb-3" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
               5. Beschwerderecht
             </h2>
             <p>

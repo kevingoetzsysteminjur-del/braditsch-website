@@ -2,9 +2,9 @@ import { ShoppingBag, Clock } from "lucide-react";
 
 const placeholderProducts = [
   { title: "Klangmeditation – Tiefe Entspannung", duration: "45 Min", price: "Demnächst", variant: "gold" },
-  { title: "Heilsames Singen – Mitmach-Audio", duration: "30 Min", price: "Demnächst", variant: "lila" },
+  { title: "Heilsames Singen – Mitmach-Audio", duration: "30 Min", price: "Demnächst", variant: "warm" },
   { title: "Hildegard-Gesänge – Originalaufnahmen", duration: "60 Min", price: "Demnächst", variant: "creme" },
-  { title: "Morgenritual mit Klangschalen", duration: "20 Min", price: "Demnächst", variant: "mixed" },
+  { title: "Morgenritual mit Klangschalen", duration: "20 Min", price: "Demnächst", variant: "sand" },
 ];
 
 export default function AudioShopPage() {
@@ -17,7 +17,7 @@ export default function AudioShopPage() {
         </div>
         <h1
           className="text-5xl sm:text-6xl font-bold text-white mb-4"
-          style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+          style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
         >
           Audio Shop
         </h1>
@@ -41,7 +41,7 @@ export default function AudioShopPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2
             className="text-4xl font-bold text-stone-900 mb-6 text-center"
-            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
           >
             Vorschau – Demnächst verfügbar
           </h2>
@@ -55,16 +55,16 @@ export default function AudioShopPage() {
               >
                 <div className={`h-48 ${
                   product.variant === "gold" ? "bg-gradient-to-br from-[#F5E6C8] to-[#C9A44A]" :
-                  product.variant === "lila" ? "bg-gradient-to-br from-[#E8DEFF] to-[#9B7CB9]" :
+                  product.variant === "warm" ? "bg-gradient-to-br from-[#F7EED8] to-[#D4AF7A]" :
                   product.variant === "creme" ? "bg-gradient-to-br from-[#FFF8F0] to-[#EAD9C0]" :
-                  "bg-gradient-to-br from-[#F5E6C8] to-[#9B7CB9]"
+                  "bg-gradient-to-br from-[#F5E6C8] to-[#B8860B]"
                 } flex items-center justify-center`}>
                   <ShoppingBag className="w-12 h-12 text-white/60" />
                 </div>
                 <div className="p-6">
                   <h3
                     className="text-xl font-bold text-stone-900 mb-2"
-                    style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                    style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
                   >
                     {product.title}
                   </h3>
@@ -80,7 +80,7 @@ export default function AudioShopPage() {
           <div className="mt-16 text-center bg-white rounded-3xl p-10 border border-[#E8D8C4] shadow-sm max-w-2xl mx-auto">
             <h3
               className="text-2xl font-bold text-stone-900 mb-4"
-              style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+              style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
             >
               Benachrichtigung erhalten
             </h3>

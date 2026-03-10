@@ -12,7 +12,7 @@ const blogPosts = [
     title: "Stimme als Spiegel der Seele",
     date: "Demnächst",
     excerpt: "Was uns unsere Stimme über unseren inneren Zustand verrät und wie wir sie als Heilwerkzeug nutzen können.",
-    variant: "lila",
+    variant: "warm",
   },
   {
     title: "Hildegard von Bingen und die Kraft der Natur",
@@ -26,13 +26,13 @@ export default function PodcastPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#F5E6C8] via-[#E8C97A] to-[#9B7CB9] py-24 text-center">
+      <section className="bg-gradient-to-br from-[#F5E6C8] via-[#E8C97A] to-[#B8860B] py-24 text-center">
         <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
           <Mic className="w-10 h-10 text-white" />
         </div>
         <h1
           className="text-5xl sm:text-6xl font-bold text-white mb-4"
-          style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+          style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
         >
           Podcast
         </h1>
@@ -44,7 +44,7 @@ export default function PodcastPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2
             className="text-4xl font-bold text-stone-900 mb-6 text-center"
-            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
           >
             Vibration Codes
           </h2>
@@ -60,7 +60,7 @@ export default function PodcastPage() {
               href="#"
               className="flex items-center gap-5 bg-white rounded-2xl p-6 border border-[#E8D8C4] shadow-sm hover:shadow-md hover:border-[#B8860B] transition-all group"
             >
-              <div className="w-14 h-14 bg-gradient-to-br from-[#9B7CB9] to-[#6A4C9C] rounded-2xl flex items-center justify-center shrink-0">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#B8860B] to-[#6A4C9C] rounded-2xl flex items-center justify-center shrink-0">
                 <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4.5a7.5 7.5 0 0 1 7.5 7.5c0 1.2-.28 2.34-.78 3.36-.13.27-.4.44-.7.44-.44 0-.8-.36-.8-.8 0-.1.02-.2.06-.29.4-.82.62-1.73.62-2.71A6.3 6.3 0 0 0 12 5.7a6.3 6.3 0 0 0-6.3 6.3c0 .98.22 1.89.62 2.71.04.09.06.19.06.29 0 .44-.36.8-.8.8-.3 0-.57-.17-.7-.44A7.48 7.48 0 0 1 4.5 12 7.5 7.5 0 0 1 12 4.5zm0 2.7a4.8 4.8 0 0 1 4.8 4.8c0 .75-.17 1.46-.48 2.1-.14.3-.44.48-.76.48-.48 0-.87-.39-.87-.87 0-.11.02-.22.07-.32.2-.43.3-.9.3-1.39A3.06 3.06 0 0 0 12 8.94a3.06 3.06 0 0 0-3.06 3.06c0 .49.1.96.3 1.39.05.1.07.21.07.32 0 .48-.39.87-.87.87-.32 0-.62-.18-.76-.48A4.78 4.78 0 0 1 7.2 12a4.8 4.8 0 0 1 4.8-4.8zm0 2.7c1.16 0 2.1.94 2.1 2.1 0 .6-.25 1.14-.66 1.53l.96 3.6c.07.27-.03.56-.25.73-.22.17-.52.2-.77.06L12 16.83l-1.38.79c-.25.14-.55.11-.77-.06-.22-.17-.32-.46-.25-.73l.96-3.6A2.1 2.1 0 0 1 12 9.9z"/>
                 </svg>
@@ -93,7 +93,7 @@ export default function PodcastPage() {
           {/* Blog */}
           <h2
             className="text-3xl font-bold text-stone-900 mb-8"
-            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
             id="blog"
           >
             Blog – Demnächst
@@ -103,12 +103,12 @@ export default function PodcastPage() {
               <div key={post.title} className="bg-white rounded-2xl overflow-hidden border border-[#E8D8C4] shadow-sm">
                 <div className={`h-36 ${
                   post.variant === "gold" ? "bg-gradient-to-br from-[#F5E6C8] to-[#C9A44A]" :
-                  post.variant === "lila" ? "bg-gradient-to-br from-[#E8DEFF] to-[#9B7CB9]" :
+                  post.variant === "warm" ? "bg-gradient-to-br from-[#F7EED8] to-[#D4AF7A]" :
                   "bg-gradient-to-br from-[#FFF8F0] to-[#EAD9C0]"
                 }`} />
                 <div className="p-5">
                   <p className="text-stone-400 text-sm mb-2">{post.date}</p>
-                  <h3 className="text-lg font-bold text-stone-900 mb-2" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+                  <h3 className="text-lg font-bold text-stone-900 mb-2" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
                     {post.title}
                   </h3>
                   <p className="text-stone-500 text-base leading-relaxed">{post.excerpt}</p>

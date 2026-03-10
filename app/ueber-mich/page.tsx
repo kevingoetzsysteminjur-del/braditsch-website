@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Calendar, Heart, Star, Leaf } from "lucide-react";
 
-function ImagePlaceholder({ className = "", variant = "mixed" }: { className?: string; variant?: "gold" | "lila" | "creme" | "mixed" }) {
+function ImagePlaceholder({ className = "", variant = "warm" }: { className?: string; variant?: "gold" | "warm" | "sand" | "rose" | "creme" }) {
   const gradients = {
     gold: "bg-gradient-to-br from-[#F5E6C8] via-[#E8C97A] to-[#C9A44A]",
-    lila: "bg-gradient-to-br from-[#E8DEFF] via-[#C4A8E0] to-[#9B7CB9]",
+    warm: "bg-gradient-to-br from-[#F7EED8] via-[#EDD9B0] to-[#D4AF7A]",
     creme: "bg-gradient-to-br from-[#FFF8F0] via-[#F5EDE0] to-[#EAD9C0]",
-    mixed: "bg-gradient-to-br from-[#F5E6C8] via-[#D4B8E8] to-[#9B7CB9]",
+    sand: "bg-gradient-to-br from-[#F5ECD8] via-[#E8D5B0] to-[#C8A87A]",
+    rose: "bg-gradient-to-br from-[#F7EDEA] via-[#EDD5C8] to-[#C9A090]",
   };
   return <div className={`${gradients[variant]} ${className}`} />;
 }
@@ -22,12 +23,12 @@ export default function UeberMichPage() {
     <>
       {/* Hero */}
       <section className="relative h-72 sm:h-96">
-        <ImagePlaceholder variant="mixed" className="absolute inset-0 w-full h-full" />
+        <ImagePlaceholder variant="warm" className="absolute inset-0 w-full h-full" />
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
           <h1
             className="text-5xl sm:text-7xl font-bold text-white mb-4"
-            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
           >
             Über mich
           </h1>
@@ -39,16 +40,16 @@ export default function UeberMichPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <ImagePlaceholder variant="lila" className="w-full h-[500px] rounded-3xl shadow-2xl" />
+              <ImagePlaceholder variant="rose" className="w-full h-[500px] rounded-3xl shadow-2xl" />
             </div>
             <div>
               <h2
                 className="text-4xl font-bold text-stone-900 mb-6"
-                style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
               >
                 Antonia Braditsch
               </h2>
-              <p className="text-[#9B7CB9] font-semibold uppercase tracking-widest text-sm mb-6">
+              <p className="text-[#B8860B] font-semibold uppercase tracking-widest text-sm mb-6">
                 Klangtherapeutin · Stimmarbeit · Medialität
               </p>
               <div className="w-16 h-1 bg-[#B8860B] mb-8 rounded-full" />
@@ -85,7 +86,7 @@ export default function UeberMichPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2
             className="text-4xl font-bold text-stone-900 mb-6 text-center"
-            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
           >
             Werdegang
           </h2>
@@ -117,21 +118,21 @@ export default function UeberMichPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2
             className="text-4xl font-bold text-stone-900 mb-6 text-center"
-            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
           >
             Meine Werte
           </h2>
-          <div className="w-16 h-1 bg-[#9B7CB9] mx-auto mb-12 rounded-full" />
+          <div className="w-16 h-1 bg-[#B8860B] mx-auto mb-12 rounded-full" />
 
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value) => (
               <div key={value.label} className="bg-white rounded-3xl p-8 border border-[#E8D8C4] text-center shadow-sm">
                 <div className="w-16 h-16 bg-[#F5EDE0] rounded-full flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="w-8 h-8 text-[#9B7CB9]" />
+                  <value.icon className="w-8 h-8 text-[#B8860B]" />
                 </div>
                 <h3
                   className="text-2xl font-bold text-stone-900 mb-4"
-                  style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                  style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
                 >
                   {value.label}
                 </h3>

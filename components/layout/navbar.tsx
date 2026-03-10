@@ -64,7 +64,7 @@ export default function Navbar() {
           <Link href="/" className="flex flex-col leading-tight group">
             <span
               className="text-xl font-bold text-stone-900 group-hover:text-[#B8860B] transition-colors"
-              style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+              style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
             >
               Antonia Braditsch
             </span>

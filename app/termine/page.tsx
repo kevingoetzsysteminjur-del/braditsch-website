@@ -5,10 +5,10 @@ export default function TerminePage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#F5E6C8] via-[#D4B8E8] to-[#9B7CB9] py-24 text-center">
+      <section className="bg-gradient-to-br from-[#F5E6C8] via-[#E8D0A0] to-[#B8860B] py-24 text-center">
         <h1
           className="text-5xl sm:text-6xl font-bold text-white mb-4"
-          style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+          style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
         >
           Termine
         </h1>
@@ -23,7 +23,7 @@ export default function TerminePage() {
             <div>
               <h2
                 className="text-4xl font-bold text-stone-900 mb-6"
-                style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
               >
                 Terminvereinbarung
               </h2>
@@ -87,21 +87,21 @@ export default function TerminePage() {
             <div>
               <h2
                 className="text-4xl font-bold text-stone-900 mb-6"
-                style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
               >
                 Regelmäßige Termine
               </h2>
-              <div className="w-16 h-1 bg-[#9B7CB9] mb-8 rounded-full" />
+              <div className="w-16 h-1 bg-[#B8860B] mb-8 rounded-full" />
 
               <div className="space-y-4">
                 <div className="bg-white rounded-2xl p-6 border border-[#E8D8C4] shadow-sm">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#E8DEFF] rounded-xl flex items-center justify-center shrink-0">
-                      <Clock className="w-5 h-5 text-[#9B7CB9]" />
+                    <div className="w-12 h-12 bg-[#FAF0DC] rounded-xl flex items-center justify-center shrink-0">
+                      <Clock className="w-5 h-5 text-[#B8860B]" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-stone-900 mb-1">Heilsames Singen</h3>
-                      <p className="text-[#9B7CB9] font-semibold mb-2">Offene Gruppe · 25€</p>
+                      <p className="text-[#B8860B] font-semibold mb-2">Offene Gruppe · 25€</p>
                       <p className="text-stone-600">Jeden 3. Mittwoch im Monat</p>
                       <p className="text-stone-600">18:30 – 20:00 Uhr</p>
                       <p className="text-stone-500 text-sm mt-2">VIVARIUM, Lichtenwörth</p>
@@ -126,7 +126,7 @@ export default function TerminePage() {
                   </p>
                   <Link
                     href="mailto:antonia@braditsch.at?subject=Termin vereinbaren"
-                    className="inline-flex items-center gap-2 bg-[#9B7CB9] hover:bg-[#8264A8] text-white font-bold px-6 py-3 rounded-xl transition-colors"
+                    className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#9A7009] text-white font-bold px-6 py-3 rounded-xl transition-colors"
                   >
                     Jetzt anfragen
                   </Link>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Calendar, Star } from "lucide-react";
 
 function ImagePlaceholder({ className = "" }: { className?: string }) {
-  return <div className={`bg-gradient-to-br from-[#F5E6C8] via-[#D4B8E8] to-[#9B7CB9] ${className}`} />;
+  return <div className={`bg-gradient-to-br from-[#F5E6C8] via-[#E8D0A0] to-[#B8860B] ${className}`} />;
 }
 
 export default function MedialitaetPage() {
@@ -15,7 +15,7 @@ export default function MedialitaetPage() {
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
           <h1
             className="text-5xl sm:text-7xl font-bold text-white mb-4 tracking-wide"
-            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+            style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
           >
             MEDIALITÄT
           </h1>
@@ -32,11 +32,11 @@ export default function MedialitaetPage() {
             <div>
               <h2
                 className="text-4xl font-bold text-stone-900 mb-6"
-                style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
               >
                 Was ist mediale Arbeit?
               </h2>
-              <div className="w-16 h-1 bg-[#9B7CB9] mb-8 rounded-full" />
+              <div className="w-16 h-1 bg-[#B8860B] mb-8 rounded-full" />
 
               <p className="text-xl text-stone-700 leading-relaxed mb-6">
                 In der medialen Arbeit bin ich Vermittlerin zwischen der materiellen und der
@@ -62,7 +62,7 @@ export default function MedialitaetPage() {
                   "Verbindung mit der geistigen Welt",
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-3">
-                    <Star className="w-5 h-5 text-[#9B7CB9] shrink-0" fill="currentColor" />
+                    <Star className="w-5 h-5 text-[#B8860B] shrink-0" fill="currentColor" />
                     <span className="text-stone-700 text-lg">{item}</span>
                   </div>
                 ))}
@@ -70,7 +70,7 @@ export default function MedialitaetPage() {
 
               <Link
                 href="mailto:antonia@braditsch.at?subject=Termin vereinbaren - Medialität"
-                className="inline-flex items-center gap-2 bg-[#9B7CB9] hover:bg-[#8264A8] text-white font-bold px-8 py-4 rounded-xl transition-colors min-h-[56px] text-lg"
+                className="inline-flex items-center gap-2 bg-[#B8860B] hover:bg-[#9A7009] text-white font-bold px-8 py-4 rounded-xl transition-colors min-h-[56px] text-lg"
               >
                 <Calendar className="w-5 h-5" />
                 Termin vereinbaren
@@ -83,7 +83,7 @@ export default function MedialitaetPage() {
               <div className="bg-white rounded-3xl p-8 border border-[#E8D8C4] shadow-sm">
                 <h3
                   className="text-2xl font-bold text-stone-900 mb-4"
-                  style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                  style={{ fontFamily: "var(--font-heading), Georgia, serif" }}
                 >
                   Wichtiger Hinweis
                 </h3>

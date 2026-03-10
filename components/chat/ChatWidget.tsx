@@ -90,9 +90,9 @@ export default function ChatWidget() {
         <div className="fixed bottom-24 right-4 sm:right-6 z-50 w-[340px] sm:w-[380px] bg-[#FFFAF4] rounded-3xl shadow-2xl border border-[#E8D8C4] flex flex-col overflow-hidden"
           style={{ maxHeight: "520px" }}>
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#9B7CB9] to-[#B8860B] px-5 py-4 flex items-center justify-between">
+          <div className="bg-gradient-to-r from-[#C9A44A] to-[#B8860B] px-5 py-4 flex items-center justify-between">
             <div>
-              <p className="text-white font-bold text-base" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+              <p className="text-white font-bold text-base" style={{ fontFamily: "var(--font-heading), Georgia, serif" }}>
                 Antonia Braditsch
               </p>
               <p className="text-white/80 text-xs">Virtueller Assistent</p>
@@ -129,9 +129,9 @@ export default function ChatWidget() {
               <div className="flex justify-start">
                 <div className="bg-white border border-[#E8D8C4] rounded-2xl rounded-bl-sm px-4 py-3">
                   <div className="flex gap-1 items-center h-4">
-                    <span className="w-2 h-2 bg-[#9B7CB9] rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                    <span className="w-2 h-2 bg-[#9B7CB9] rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                    <span className="w-2 h-2 bg-[#9B7CB9] rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                    <span className="w-2 h-2 bg-[#B8860B] rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                    <span className="w-2 h-2 bg-[#B8860B] rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                    <span className="w-2 h-2 bg-[#B8860B] rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
                   </div>
                 </div>
               </div>
@@ -163,11 +163,11 @@ export default function ChatWidget() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendMessage(input)}
               placeholder="Deine Frage..."
-              className="flex-1 bg-[#FFF8F0] border border-[#E8D8C4] rounded-xl px-4 py-2.5 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#9B7CB9]/40"
+              className="flex-1 bg-[#FFF8F0] border border-[#E8D8C4] rounded-xl px-4 py-2.5 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#B8860B]/40"
             />
             <button
               onClick={() => sendMessage(input)}
-              className="bg-[#9B7CB9] hover:bg-[#8264A8] text-white rounded-xl p-2.5 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="bg-[#B8860B] hover:bg-[#9A7009] text-white rounded-xl p-2.5 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Senden"
             >
               <Send className="w-4 h-4" />
@@ -179,7 +179,7 @@ export default function ChatWidget() {
       {/* Toggle Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-5 right-4 sm:right-6 z-50 w-16 h-16 bg-[#9B7CB9] hover:bg-[#8264A8] text-white rounded-full shadow-xl flex items-center justify-center transition-all hover:scale-110 active:scale-95"
+        className="fixed bottom-5 right-4 sm:right-6 z-50 w-16 h-16 bg-[#B8860B] hover:bg-[#9A7009] text-white rounded-full shadow-xl flex items-center justify-center transition-all hover:scale-110 active:scale-95"
         aria-label="Chat öffnen"
       >
         {open ? <X className="w-7 h-7" /> : <MessageCircle className="w-7 h-7" />}
