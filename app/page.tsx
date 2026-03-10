@@ -55,18 +55,21 @@ export default function Home() {
         <div className="absolute inset-0 bg-white/40" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-12 items-center w-full">
           <div>
-            <h1
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-stone-900 mb-4 leading-tight"
-              style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
-            >
+            <h1 className="hero-name text-stone-900 mb-3">
               Antonia Braditsch
             </h1>
-            <p className="text-2xl text-[#B8860B] font-semibold mb-8 tracking-wide">
+            <p
+              className="text-xl text-[#B8860B] mb-8 tracking-[0.15em] uppercase"
+              style={{ fontFamily: "var(--font-accent), Georgia, serif" }}
+            >
               Klangtherapie &amp; Heilfrequenzen
             </p>
 
             <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-[#E8D8C4]">
-              <p className="text-lg text-stone-700 font-medium mb-4">
+              <p
+                className="text-lg text-stone-700 mb-4 italic"
+                style={{ fontFamily: "var(--font-accent), Georgia, serif" }}
+              >
                 Ich unterstütze Menschen wie dich, wenn…
               </p>
               <ul className="space-y-3">

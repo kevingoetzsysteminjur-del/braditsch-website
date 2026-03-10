@@ -1,22 +1,29 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Lato } from "next/font/google";
+import { Cormorant_Garamond, Lora, Marcellus } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import ChatWidget from "@/components/chat/ChatWidget";
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-heading",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const lato = Lato({
+const lora = Lora({
   subsets: ["latin"],
-  variable: "--font-lato",
+  variable: "--font-body",
   display: "swap",
-  weight: ["300", "400", "700"],
+  weight: ["400", "500"],
+});
+
+const marcellus = Marcellus({
+  subsets: ["latin"],
+  variable: "--font-accent",
+  display: "swap",
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -51,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${playfair.variable} ${lato.variable}`}>
+    <html lang="de" className={`${cormorant.variable} ${lora.variable} ${marcellus.variable}`}>
       <body className="bg-[#FFF8F0] text-stone-900 antialiased">
         <Navbar />
         <main>{children}</main>

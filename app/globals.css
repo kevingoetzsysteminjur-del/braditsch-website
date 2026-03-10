@@ -7,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-lato);
-  --font-heading: var(--font-playfair);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
+  --font-mono: monospace;
   --color-gold: #B8860B;
   --color-lila: #9B7CB9;
   --color-creme: #FFF8F0;
@@ -63,19 +63,42 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-lato), system-ui, sans-serif;
-    font-size: 18px;
-    line-height: 1.75;
+    font-family: var(--font-body), Georgia, serif;
+    font-size: clamp(1.05rem, 2vw, 1.15rem);
+    line-height: 1.8;
+    font-weight: 400;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-playfair), Georgia, serif;
-    line-height: 1.3;
+    font-family: var(--font-heading), Georgia, serif;
+    line-height: 1.25;
+    letter-spacing: 0.05em;
+    font-weight: 600;
   }
+  h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+  h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+  h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
+  p  { font-size: clamp(1.05rem, 2vw, 1.15rem); line-height: 1.8; }
 }
 
 @layer utilities {
+  /* Schriftarten */
   .font-heading {
-    font-family: var(--font-playfair), Georgia, serif;
+    font-family: var(--font-heading), Georgia, serif;
+  }
+  .font-body {
+    font-family: var(--font-body), Georgia, serif;
+  }
+  .font-accent {
+    font-family: var(--font-accent), Georgia, serif;
+  }
+
+  /* Hero-Name: Cormorant Garamond Light – Luxus-Look */
+  .hero-name {
+    font-family: var(--font-heading), Georgia, serif;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.15;
   }
   .text-gold {
     color: #B8860B;
