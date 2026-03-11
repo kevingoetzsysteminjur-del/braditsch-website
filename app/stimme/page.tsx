@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Stimmarbeit | Antonia Braditsch",
+  description:
+    "Stimmarbeit und heilsames Singen mit Antonia Braditsch. Einzelstunden 'Magie der Stimme' und offene Gruppe 'Heilsames Singen' – jeden 3. Mittwoch in Lichtenwörth.",
+};
 
 const angebote = [
   {

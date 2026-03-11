@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Outer triangle -->
+  <polygon points="50,8 95,85 5,85" fill="none" stroke="#A6894D" stroke-width="5"/>
+  <!-- Inner triangle (pointing down) -->
+  <polygon points="50,30 75,72 25,72" fill="#A6894D" opacity="0.6"/>
+  <!-- Center dot -->
+  <circle cx="50" cy="50" r="4" fill="#A6894D"/>
+</svg>

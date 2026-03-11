@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Medialität | Antonia Braditsch",
+  description:
+    "Mediale Begleitung mit Antonia Braditsch – lichtvolle Verbindung zwischen materieller und geistiger Welt. Personalisierte Botschaften für Klarheit und innere Orientierung.",
+};
 
 const qualities = [
   "Lichtvolle, liebevolle Kommunikation",

@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import ChatWidget from "@/components/chat/ChatWidget";
+import CookieBanner from "@/components/CookieBanner";
 import { CartProvider } from "@/context/CartContext";
 import CartSidebar from "@/components/shop/CartSidebar";
 
@@ -64,10 +65,11 @@ export default function RootLayout({
       <body className="bg-[#FFF8F0] text-stone-900 antialiased">
         <CartProvider>
           <Navbar />
-          <main>{children}</main>
+          <main className="page-transition">{children}</main>
           <Footer />
           <ChatWidget />
           <CartSidebar />
+          <CookieBanner />
         </CartProvider>
       </body>
     </html>

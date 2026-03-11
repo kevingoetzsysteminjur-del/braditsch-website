@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Klangtherapie | Antonia Braditsch",
+  description:
+    "Klangtherapie mit Klangschalen, Gongs und Körpermonochord in Lichtenwörth. Soul Sound Healing, Klangliege, Kristallpyramide und Klangschalen für Kinder – bei Antonia Braditsch.",
+};
 
 const angebote = [
   {

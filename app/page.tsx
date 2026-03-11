@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronDown, ChevronRight, Music } from "lucide-react";
 import Image from "next/image";
 import AnimateIn from "@/components/ui/AnimateIn";
+
+export const metadata: Metadata = {
+  title: "Antonia Braditsch | Klangtherapie & Heilfrequenzen | Lichtenwörth",
+  description:
+    "Klangtherapie, Stimmarbeit und mediale Begleitung in Lichtenwörth, Österreich. Antonia Braditsch begleitet dich mit Heilfrequenzen und Klangschalen zu innerer Balance und Heilung.",
+};
 
 const supportPoints = [
   "…deine Lebensenergie aus dem Gleichgewicht gekommen ist.",
@@ -294,6 +301,49 @@ export default function Home() {
               </Link>
             </div>
           </AnimateIn>
+        </div>
+      </section>
+
+      {/* ── VIDEOS ───────────────────────────────────────── */}
+      <section className="py-20 sm:py-32 px-5 sm:px-6" style={{ backgroundColor: "var(--sage)" }}>
+        <div className="max-w-6xl mx-auto">
+          <AnimateIn className="text-center mb-16">
+            <p className="text-xs uppercase tracking-[0.3em] text-[#A6894D] mb-5"
+              style={{ fontFamily: "var(--font-accent), Georgia, serif" }}>
+              Videos
+            </p>
+            <h2 className="section-title">Antonia im Gespräch</h2>
+            <span className="gold-line mt-6" />
+          </AnimateIn>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { id: "6i_xF07PZIw", title: "Klänge & Heilfrequenzen" },
+              { id: "u2ClytRGe6U", title: "Stimme & Singen" },
+              { id: "JQQ93m8GRbI", title: "Mein Werdegang" },
+            ].map((video, i) => (
+              <AnimateIn key={video.id} delay={i * 120}>
+                <div style={{ borderRadius: "8px", overflow: "hidden", boxShadow: "0 8px 32px rgba(61,50,41,0.12)" }}>
+                  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+                    <iframe
+                      src={`https://www.youtube.com/embed/${video.id}`}
+                      title={video.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      loading="lazy"
+                      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: 0 }}
+                    />
+                  </div>
+                </div>
+                <p
+                  className="mt-4 text-center text-sm"
+                  style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif", letterSpacing: "0.04em" }}
+                >
+                  {video.title}
+                </p>
+              </AnimateIn>
+            ))}
+          </div>
         </div>
       </section>
 

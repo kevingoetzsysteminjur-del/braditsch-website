@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, Clock, ChevronRight } from "lucide-react";
 import PastEvents from "./PastEvents";
+
+export const metadata: Metadata = {
+  title: "Termine & Veranstaltungen | Antonia Braditsch",
+  description:
+    "Aktuelle Termine und Veranstaltungen von Antonia Braditsch: Training Intuition & Hellsinne, Heilsames Singen und Einzelbehandlungen im VIVARIUM Lichtenwörth.",
+};
 
 // ── Sub-cards for Einzelbehandlungen ────────────────────────────────────────
 
