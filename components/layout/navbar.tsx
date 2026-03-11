@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { X, Menu, ShoppingBag } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
@@ -56,20 +57,16 @@ export default function Navbar() {
           style={{ maxWidth: "1400px", padding: "0 40px", height: "72px" }}
         >
           {/* Logo */}
-          <Link
-            href="/"
-            className="shrink-0 transition-opacity hover:opacity-70"
-            style={{
-              fontFamily: "var(--font-heading), Georgia, serif",
-              color: "var(--text)",
-              fontWeight: 400,
-              fontSize: "16px",
-              letterSpacing: "0.05em",
-              textDecoration: "none",
-              whiteSpace: "nowrap",
-            }}
-          >
-            Antonia Braditsch
+          <Link href="/" className="shrink-0 transition-opacity hover:opacity-70">
+            <Image
+              src="/images/braditsch-logo.png"
+              alt="Antonia Braditsch"
+              width={180}
+              height={60}
+              className="object-contain"
+              style={{ maxWidth: "180px", width: "auto", height: "36px" }}
+              priority
+            />
           </Link>
 
           {/* Desktop Nav – 1100px+ */}
@@ -153,17 +150,14 @@ export default function Navbar() {
       >
         {/* Top bar */}
         <div className="flex items-center justify-between shrink-0" style={{ padding: "0 24px", height: "72px" }}>
-          <span
-            style={{
-              fontFamily: "var(--font-heading), Georgia, serif",
-              color: "var(--text)",
-              fontWeight: 400,
-              fontSize: "16px",
-              letterSpacing: "0.05em",
-            }}
-          >
-            Antonia Braditsch
-          </span>
+          <Image
+            src="/images/braditsch-logo.png"
+            alt="Antonia Braditsch"
+            width={180}
+            height={60}
+            className="object-contain"
+            style={{ maxWidth: "180px", width: "auto", height: "36px" }}
+          />
           <button
             onClick={() => setMobileOpen(false)}
             className="flex items-center justify-center transition-opacity hover:opacity-60"

@@ -48,24 +48,18 @@ export default function Home() {
 
         <div className="relative z-10 flex flex-col items-center pt-24 pb-10">
           {/* Logo */}
-          <AnimateIn delay={0}>
-            <div style={{ marginBottom: "40px" }}>
+          <AnimateIn delay={150}>
+            <div style={{ marginBottom: "32px" }}>
               <Image
-                src="/images/logo-transparent.png"
-                alt="Vibration Codes Logo"
-                width={200}
+                src="/images/braditsch-logo.png"
+                alt="Antonia Braditsch"
+                width={600}
                 height={200}
                 className="mx-auto object-contain"
-                style={{ maxWidth: "200px", width: "100%", height: "auto", opacity: 0.6 }}
+                style={{ maxWidth: "clamp(280px, 80vw, 600px)", width: "100%", height: "auto" }}
                 priority
               />
             </div>
-          </AnimateIn>
-
-          <AnimateIn delay={150}>
-            <h1 className="hero-name mb-8">
-              Antonia Braditsch
-            </h1>
           </AnimateIn>
 
           {/* Three gold dots */}
