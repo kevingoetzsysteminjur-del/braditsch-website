@@ -62,7 +62,6 @@ export default function StimmePage() {
           >
             Stimme
           </h1>
-          <span className="gold-line mb-8 block" />
           <p
             className="text-base sm:text-lg leading-relaxed"
             style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}

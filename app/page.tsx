@@ -141,7 +141,6 @@ export default function Home() {
 
           <AnimateIn delay={700}>
             <div className="mt-16">
-              <span className="gold-line" />
             </div>
           </AnimateIn>
         </div>
@@ -156,7 +155,6 @@ export default function Home() {
               Angebote
             </p>
             <h2 className="section-title">Meine Arbeit</h2>
-            <span className="gold-line mt-6" />
           </AnimateIn>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-12 sm:gap-16">
@@ -265,7 +263,6 @@ export default function Home() {
               1098 – 1179
             </p>
             <h2 className="section-title mb-6">Hildegard von Bingen</h2>
-            <span className="gold-line mb-10" />
           </AnimateIn>
 
           <AnimateIn delay={200}>
@@ -313,7 +310,6 @@ export default function Home() {
               Videos
             </p>
             <h2 className="section-title">Antonia im Gespräch</h2>
-            <span className="gold-line mt-6" />
           </AnimateIn>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">

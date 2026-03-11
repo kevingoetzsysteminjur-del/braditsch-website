@@ -46,7 +46,6 @@ export default function PasswortVergessenPage() {
           <h1 style={{ fontFamily: "var(--font-heading), Georgia, serif", fontWeight: 300, fontSize: "clamp(1.8rem, 5vw, 2.8rem)", letterSpacing: "0.15em", color: "var(--text)" }}>
             Passwort zurücksetzen
           </h1>
-          <span className="gold-line block mt-5" />
         </div>
 
         {sent ? (

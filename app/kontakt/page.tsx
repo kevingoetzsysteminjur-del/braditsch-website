@@ -36,7 +36,6 @@ export default function KontaktPage() {
           >
             Schreib mir
           </h1>
-          <span className="gold-line block" />
         </div>
       </section>
 

@@ -157,7 +157,6 @@ export default function TermineClient() {
           >
             Termine &amp;<br />Veranstaltungen
           </h1>
-          <span className="gold-line mt-8 block" />
           {isAdmin && (
             <button
               onClick={openAdd}

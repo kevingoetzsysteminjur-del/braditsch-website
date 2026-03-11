@@ -51,8 +51,6 @@ export default function NotFound() {
           Diese Seite wurde<br />nicht gefunden.
         </h1>
 
-        <span className="gold-line block mb-10" />
-
         <p
           className="text-base leading-relaxed mb-12"
           style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}

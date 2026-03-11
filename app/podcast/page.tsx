@@ -36,7 +36,6 @@ export default function PodcastPage() {
           >
             Vibration Codes
           </h1>
-          <span className="gold-line block mb-8" />
           <p
             className="text-base sm:text-lg leading-relaxed"
             style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}

@@ -50,9 +50,6 @@ export default function UeberMichPage() {
               Antonia Braditsch
             </h1>
           </AnimateIn>
-          <AnimateIn delay={280}>
-            <span className="gold-line mb-8 block" />
-          </AnimateIn>
           <AnimateIn delay={400}>
             <p
               className="text-base sm:text-lg leading-relaxed"
@@ -127,7 +124,6 @@ export default function UeberMichPage() {
               Mein Weg
             </p>
             <h2 className="section-title">Werdegang</h2>
-            <span className="gold-line mt-6" />
           </AnimateIn>
 
           <div>
@@ -164,7 +160,6 @@ export default function UeberMichPage() {
               Wofür ich stehe
             </p>
             <h2 className="section-title">Meine Werte</h2>
-            <span className="gold-line mt-6" />
           </AnimateIn>
 
           <div className="grid sm:grid-cols-3 gap-12 sm:gap-16">

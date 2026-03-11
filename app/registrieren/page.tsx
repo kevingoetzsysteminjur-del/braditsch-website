@@ -66,7 +66,6 @@ export default function RegistrierenPage() {
           >
             Bitte bestätige deine E-Mail
           </h1>
-          <span className="gold-line block mb-6" />
           <p
             className="text-base leading-relaxed mb-8"
             style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}
@@ -108,7 +107,6 @@ export default function RegistrierenPage() {
           >
             Registrieren
           </h1>
-          <span className="gold-line block mt-5" />
         </div>
 
         <form onSubmit={handleRegister} className="space-y-5">

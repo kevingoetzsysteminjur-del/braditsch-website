@@ -56,7 +56,6 @@ export default function AnmeldenPage() {
           >
             Anmelden
           </h1>
-          <span className="gold-line block mt-5" />
         </div>
 
         {/* Form */}
