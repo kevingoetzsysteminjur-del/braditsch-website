@@ -174,7 +174,6 @@ export default function KlangPage() {
             Schwingungsträger. Wenn Klangschalen und Gongs erklingen, übertragen sich ihre
             Heilfrequenzen direkt auf jede einzelne Zelle.
           </p>
-          <span className="gold-line" />
         </div>
       </section>
 

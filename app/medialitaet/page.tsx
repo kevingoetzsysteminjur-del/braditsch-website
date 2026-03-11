@@ -178,7 +178,6 @@ export default function MedialitaetPage() {
           >
             Lichtvolle Energien, die genau zur richtigen Zeit zu dir kommen.
           </p>
-          <span className="gold-line" />
         </div>
       </section>
 

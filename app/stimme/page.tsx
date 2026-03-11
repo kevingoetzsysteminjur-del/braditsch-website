@@ -175,7 +175,6 @@ export default function StimmePage() {
             Wenn wir singen, produzieren wir heilsame Schwingungen, die unser gesamtes System
             auf tiefe Weise berühren.
           </p>
-          <span className="gold-line" />
         </div>
       </section>
 

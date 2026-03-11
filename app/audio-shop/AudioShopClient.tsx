@@ -301,7 +301,6 @@ export default function AudioShopClient() {
       {/* Footer */}
       <section className="py-14 px-6" style={{ backgroundColor: "var(--sage)" }}>
         <div className="max-w-3xl mx-auto text-center">
-          <span className="gold-line mb-8 block" />
           <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}>
             Fragen zum Shop?{" "}
             <a href="mailto:antonia@braditsch.at" style={{ color: "var(--gold)" }}>antonia@braditsch.at</a>

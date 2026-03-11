@@ -138,7 +138,6 @@ export default function PodcastPage() {
             Tauche ein in die Welt der Klänge, Heilfrequenzen und spirituellen Impulse.
             Der Podcast von Antonia Braditsch – für alle, die tiefer lauschen möchten.
           </p>
-          <span className="gold-line" />
         </div>
       </section>
     </>

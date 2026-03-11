@@ -125,7 +125,6 @@ export default function KlangwirkungPage() {
       {/* CTA */}
       <section className="py-16 px-6" style={{ backgroundColor: "var(--bg)" }}>
         <div className="max-w-2xl mx-auto text-center">
-          <span className="gold-line block mb-10" />
           <p
             className="text-base leading-relaxed mb-8"
             style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}

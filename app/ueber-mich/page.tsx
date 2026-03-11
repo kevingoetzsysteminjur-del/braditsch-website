@@ -199,7 +199,6 @@ export default function UeberMichPage() {
         <div className="max-w-2xl mx-auto text-center">
           <AnimateIn>
             <h2 className="section-title mb-6">Bereit für deine Reise?</h2>
-            <span className="gold-line mb-10" />
             <p className="leading-relaxed mb-12" style={{ color: "var(--text-muted)" }}>
               Ich freue mich darauf, dich auf deinem Weg zu begleiten.
               Vereinbare jetzt deinen ersten Termin – ich bin für dich da.

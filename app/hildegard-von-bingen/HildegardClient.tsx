@@ -214,7 +214,6 @@ export default function HildegardClient() {
       {/* FOOTER CTA */}
       <section className="py-10 sm:py-16 px-5 sm:px-6" style={{ backgroundColor: "var(--sage)" }}>
         <div className="max-w-2xl mx-auto text-center">
-          <span className="gold-line block mx-auto mb-8" />
           <p className="text-base leading-relaxed mb-8" style={{ color: "var(--text-muted)", fontFamily: "var(--font-body), Georgia, serif" }}>
             Interesse an einer szenischen Lesung oder einem Workshop?
           </p>

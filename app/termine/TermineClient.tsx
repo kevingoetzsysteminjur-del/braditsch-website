@@ -372,7 +372,6 @@ export default function TermineClient() {
       {/* Contact Footer */}
       <section className="py-16 px-6" style={{ backgroundColor: "var(--bg)" }}>
         <div className="max-w-4xl mx-auto text-center">
-          <span className="gold-line mb-8 block" />
           <p className="text-sm leading-relaxed" style={BODY}>
             Weitere Infos &amp; Anmeldung unter{" "}
             <a href="mailto:antonia@braditsch.at" style={{ color: "var(--gold)", fontFamily: "var(--font-body), Georgia, serif" }}>antonia@braditsch.at</a>
