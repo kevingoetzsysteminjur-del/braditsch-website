@@ -7,6 +7,7 @@ import ChatWidget from "@/components/chat/ChatWidget";
 import CookieBanner from "@/components/CookieBanner";
 import { CartProvider } from "@/context/CartContext";
 import CartSidebar from "@/components/shop/CartSidebar";
+import AdminBadge from "@/components/admin/AdminBadge";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -70,6 +71,7 @@ export default function RootLayout({
           <ChatWidget />
           <CartSidebar />
           <CookieBanner />
+          <AdminBadge />
         </CartProvider>
       </body>
     </html>
