@@ -3,16 +3,49 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, Image, ShoppingBag, Calendar, ShoppingCart, LogOut, Menu, X } from "lucide-react";
+import { LayoutDashboard, Image, ShoppingBag, Calendar, ShoppingCart, LogOut, Menu, Users, MessageCircle, CalendarDays, UserCircle, Mail, Package } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 
-const navItems = [
-  { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
-  { label: "Galerie", href: "/admin/galerie", icon: Image },
-  { label: "Shop", href: "/admin/shop", icon: ShoppingBag },
-  { label: "Termine", href: "/admin/termine", icon: Calendar },
-  { label: "Bestellungen", href: "/admin/bestellungen", icon: ShoppingCart },
+const navGroups = [
+  {
+    label: "Übersicht",
+    items: [
+      { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
+      { label: "Benutzer", href: "/admin/benutzer", icon: Users },
+    ],
+  },
+  {
+    label: "Inhalte",
+    items: [
+      { label: "Produkte", href: "/admin/produkte", icon: Package },
+      { label: "Shop", href: "/admin/shop", icon: ShoppingBag },
+      { label: "Galerie", href: "/admin/galerie", icon: Image },
+      { label: "Email Templates", href: "/admin/email-templates", icon: Mail },
+    ],
+  },
+  {
+    label: "Buchungen",
+    items: [
+      { label: "Termine", href: "/admin/termine", icon: Calendar },
+      { label: "Kalender", href: "/admin/kalender", icon: CalendarDays },
+      { label: "Bestellungen", href: "/admin/bestellungen", icon: ShoppingCart },
+    ],
+  },
+  {
+    label: "Kommunikation",
+    items: [
+      { label: "Support", href: "/admin/support", icon: MessageCircle },
+    ],
+  },
+  {
+    label: "Einstellungen",
+    items: [
+      { label: "Profil", href: "/admin/profil", icon: UserCircle },
+    ],
+  },
 ];
+
+const allItems = navGroups.flatMap((g) => g.items);
 
 export default function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -41,31 +74,38 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 py-6 overflow-y-auto">
-        {navItems.map(({ label, href, icon: Icon }) => {
-          const active = pathname === href;
-          return (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setSidebarOpen(false)}
-              className="flex items-center gap-3 px-6 py-3 transition-all duration-200"
-              style={{
-                backgroundColor: active ? "rgba(166,137,77,0.15)" : "transparent",
-                borderLeft: active ? "2px solid #C9A96E" : "2px solid transparent",
-                color: active ? "#C9A96E" : "rgba(255,255,255,0.55)",
-                fontFamily: "var(--font-body), Georgia, serif",
-                fontSize: "12px",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                textDecoration: "none",
-              }}
-            >
-              <Icon className="w-4 h-4 shrink-0" />
-              {label}
-            </Link>
-          );
-        })}
+      <nav className="flex-1 py-4 overflow-y-auto">
+        {navGroups.map((group) => (
+          <div key={group.label} className="mb-2">
+            <p className="px-6 py-2" style={{ fontFamily: "var(--font-body), Georgia, serif", fontSize: "8px", textTransform: "uppercase", letterSpacing: "0.22em", color: "rgba(255,255,255,0.2)" }}>
+              {group.label}
+            </p>
+            {group.items.map(({ label, href, icon: Icon }) => {
+              const active = pathname === href;
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setSidebarOpen(false)}
+                  className="flex items-center gap-3 px-6 py-2.5 transition-all duration-200"
+                  style={{
+                    backgroundColor: active ? "rgba(166,137,77,0.15)" : "transparent",
+                    borderLeft: active ? "2px solid #C9A96E" : "2px solid transparent",
+                    color: active ? "#C9A96E" : "rgba(255,255,255,0.55)",
+                    fontFamily: "var(--font-body), Georgia, serif",
+                    fontSize: "11px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.12em",
+                    textDecoration: "none",
+                  }}
+                >
+                  <Icon className="w-3.5 h-3.5 shrink-0" />
+                  {label}
+                </Link>
+              );
+            })}
+          </div>
+        ))}
       </nav>
 
       {/* Logout */}
@@ -117,7 +157,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
             className="text-sm font-medium"
             style={{ fontFamily: "var(--font-body), Georgia, serif", color: "#3D3229", textTransform: "uppercase", letterSpacing: "0.12em" }}
           >
-            {navItems.find((n) => n.href === pathname)?.label || "Admin"}
+            {allItems.find((n) => n.href === pathname)?.label || "Admin"}
           </h1>
           <Link
             href="/"
