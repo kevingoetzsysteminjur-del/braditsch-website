@@ -20,6 +20,61 @@ type Event = {
 
 const empty = { title: "", subtitle: "", description: "", date: "", time: "", price: 0, location: "VIVARIUM, Angergasse 7, 2493 Lichtenwörth", badge: "", active: true };
 
+const DEMO_EVENTS: Event[] = [
+  {
+    id: "demo-1",
+    title: "Klangschalen-Abend",
+    subtitle: "Entspannung & Heilfrequenzen",
+    description: "Ein Abend der Stille und Heilung mit Klangschalen, Gong und Stimmarbeit. Ideal für Einsteiger und Fortgeschrittene.",
+    date: "2026-03-22",
+    time: "18:30 – 20:30",
+    price: 35,
+    location: "VIVARIUM, Angergasse 7, 2493 Lichtenwörth",
+    badge: "Frühbucher bis 15.03.",
+    active: true,
+    created_at: "2026-03-01T10:00:00Z",
+  },
+  {
+    id: "demo-2",
+    title: "Stimme & Seele",
+    subtitle: "Workshop für Stimmarbeit",
+    description: "Entdecke die Kraft deiner eigenen Stimme. Dieser Workshop verbindet Atemarbeit, Tönen und meditative Stimmübungen.",
+    date: "2026-04-05",
+    time: "10:00 – 14:00",
+    price: 75,
+    location: "VIVARIUM, Angergasse 7, 2493 Lichtenwörth",
+    badge: "Nur 8 Plätze",
+    active: true,
+    created_at: "2026-03-05T09:00:00Z",
+  },
+  {
+    id: "demo-3",
+    title: "Hildegard von Bingen – Klangreise",
+    subtitle: "Mittelalterliche Heilkunde & Musik",
+    description: "Eine meditative Klangreise inspiriert von den Visionen und Heilmelodien der Hildegard von Bingen.",
+    date: "2026-04-19",
+    time: "17:00 – 19:00",
+    price: 28,
+    location: "VIVARIUM, Angergasse 7, 2493 Lichtenwörth",
+    badge: "",
+    active: true,
+    created_at: "2026-03-07T14:00:00Z",
+  },
+  {
+    id: "demo-4",
+    title: "Winterklang – Abschluss-Abend",
+    subtitle: "Rückblick 2025",
+    description: "Ein besonderer Abend zum Jahresausklang mit Gong, Klangschalen und meditativen Texten.",
+    date: "2025-12-21",
+    time: "19:00 – 21:00",
+    price: 30,
+    location: "VIVARIUM, Angergasse 7, 2493 Lichtenwörth",
+    badge: "",
+    active: false,
+    created_at: "2025-11-01T10:00:00Z",
+  },
+];
+
 export default function AdminTerminePage() {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,7 +87,7 @@ export default function AdminTerminePage() {
   const load = async () => {
     setLoading(true);
     const { data } = await supabase.from("events").select("*").order("date", { ascending: true });
-    setEvents(data || []);
+    setEvents(data && data.length > 0 ? data : DEMO_EVENTS);
     setLoading(false);
   };
 

@@ -12,6 +12,41 @@ type Order = {
   created_at: string;
 };
 
+const DEMO_ORDERS: Order[] = [
+  {
+    id: "demo-1",
+    customer_email: "maria.huber@gmail.com",
+    items: [{ title: "Klangschalen-Meditation (Aufnahme)", priceStr: "18,00 €" }, { title: "O Ignis Spiritus – Moderne Fassung", priceStr: "9,00 €" }],
+    total: 27,
+    status: "completed",
+    created_at: "2026-03-10T14:22:00Z",
+  },
+  {
+    id: "demo-2",
+    customer_email: "thomas.wagner@web.at",
+    items: [{ title: "Flug des Phönix – Klangreise", priceStr: "14,00 €" }],
+    total: 14,
+    status: "pending",
+    created_at: "2026-03-11T09:05:00Z",
+  },
+  {
+    id: "demo-3",
+    customer_email: "sabine.mayer@outlook.com",
+    items: [{ title: "Ave Maria – Original", priceStr: "9,00 €" }, { title: "Lotosblume – Mantra", priceStr: "12,00 €" }, { title: "Morgen – Stille Meditation", priceStr: "9,00 €" }],
+    total: 30,
+    status: "processing",
+    created_at: "2026-03-12T17:40:00Z",
+  },
+  {
+    id: "demo-4",
+    customer_email: "peter.steinbauer@gmx.at",
+    items: [{ title: "Zeit zum Neubeginn – Klangreise", priceStr: "14,00 €" }],
+    total: 14,
+    status: "completed",
+    created_at: "2026-03-13T08:15:00Z",
+  },
+];
+
 const STATUS_LABELS: Record<string, string> = {
   pending: "Ausstehend",
   processing: "In Bearbeitung",
@@ -35,7 +70,7 @@ export default function AdminBestellungenPage() {
   const load = async () => {
     setLoading(true);
     const { data } = await supabase.from("orders").select("*").order("created_at", { ascending: false });
-    setOrders(data || []);
+    setOrders(data && data.length > 0 ? data : DEMO_ORDERS);
     setLoading(false);
   };
 

@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Lora, Marcellus } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/navbar";
-import Footer from "@/components/layout/footer";
-import ChatWidget from "@/components/chat/ChatWidget";
-import CookieBanner from "@/components/CookieBanner";
+import ConditionalLayout from "@/components/layout/ConditionalLayout";
 import { CartProvider } from "@/context/CartContext";
-import CartSidebar from "@/components/shop/CartSidebar";
 import AdminBadge from "@/components/admin/AdminBadge";
 
 const cormorant = Cormorant_Garamond({
@@ -65,12 +61,9 @@ export default function RootLayout({
     <html lang="de" className={`${cormorant.variable} ${lora.variable} ${marcellus.variable}`}>
       <body className="bg-[#FFF8F0] text-stone-900 antialiased">
         <CartProvider>
-          <Navbar />
-          <main className="page-transition">{children}</main>
-          <Footer />
-          <ChatWidget />
-          <CartSidebar />
-          <CookieBanner />
+          <ConditionalLayout>
+            <main className="page-transition">{children}</main>
+          </ConditionalLayout>
           <AdminBadge />
         </CartProvider>
       </body>
